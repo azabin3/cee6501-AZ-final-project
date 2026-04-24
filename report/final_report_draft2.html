@@ -1,0 +1,2876 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>final_report_draft2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="mixed-3d-truss-and-frame-analysis-of-the-fort-griffin-iron-truss-bridge">Mixed 3D Truss and Frame Analysis of the Fort Griffin Iron Truss Bridge</h1>
+<h2 id="baseline-and-damage-scenario-evaluation">Baseline and Damage Scenario Evaluation</h2>
+<h3 id="final-project-report">Final Project Report</h3>
+<h4 id="project-focus">Project Focus</h4>
+<ul>
+<li>Mixed 3D truss and frame solver development</li>
+</ul>
+<h4 id="application">Application</h4>
+<ul>
+<li>Fort Griffin Iron Truss Bridge</li>
+</ul>
+<h4 id="primary-scenarios">Primary Scenarios</h4>
+<ul>
+<li>Missing diagonal and weakened floor beam</li>
+</ul>
+<h4 id="visualization-set">Visualization Set</h4>
+<ul>
+<li>Static and interactive bridge figures</li>
+</ul>
+<h4 id="key-findings">Key Findings</h4>
+<p>The solver was verified on 3D truss and frame cases, then applied to a rational mixed bridge model. The baseline response showed load transfer from the floor system into the side trusses. The missing diagonal case highlighted truss force redistribution, while the weakened floor beam case produced the clearest local damage response.</p>
+<h2 id="1-title-and-project-overview">1. Title and Project Overview</h2>
+<p>This report presents the development of a mixed three dimensional truss and frame analysis workflow for the final project. The work extends earlier class methods into a broader solver framework that supports three dimensional truss elements, three dimensional frame elements, structured input files, verification studies, bridge idealization, baseline response evaluation, and selected damage scenarios. The final application is the Fort Griffin Iron Truss Bridge, modeled as a mixed structural system with side trusses, floor beams, and stringers.</p>
+<h2 id="2-user-guide-for-the-code">2. User Guide for the Code</h2>
+<h3 id="21-purpose-of-the-code">2.1 Purpose of the code</h3>
+<p>The program developed in this project is a Python based structural analysis workflow built around the direct stiffness method for mixed three dimensional truss and three dimensional frame systems. The same implementation is used for small user examples, validation studies, and the final Fort Griffin bridge study. A user changes the structural input file rather than rewriting the solver itself.</p>
+<p>The code is intended to let a user</p>
+<ul>
+<li>define a structure in a JSON input file</li>
+<li>run the model from the top level notebook</li>
+<li>view quick result tables inside Jupyter</li>
+<li>save detailed output files automatically</li>
+<li>generate both static and interactive structural plots</li>
+</ul>
+<p>This user guide explains how to run the code, how the input files are organized, what outputs are produced, and how another user can modify the input to study a different structure.</p>
+<h3 id="22-repository-organization">2.2 Repository organization</h3>
+<p>The repository is organized so that the top level notebook acts as the entry point and the analysis logic is stored in reusable helper modules.</p>
+<p>Main folders and files are</p>
+<ul>
+<li>
+<p><code>main.ipynb</code>
+top level notebook that a user runs</p>
+</li>
+<li>
+<p><code>helpers/</code>
+reusable code for preprocessing, element routines, assembly, solving, postprocessing, output writing, and plotting</p>
+</li>
+<li>
+<p><code>inputs/user_examples/</code>
+starter models intended for a first time user</p>
+</li>
+<li>
+<p><code>inputs/validation/</code>
+validation models used to verify the implementation</p>
+</li>
+<li>
+<p><code>inputs/final_bridge/</code>
+baseline and scenario files for the Fort Griffin bridge study</p>
+</li>
+<li>
+<p><code>outputs/runs/</code>
+saved result folders for each analysis run</p>
+</li>
+<li>
+<p><code>outputs/user_examples/simple_plots/</code>
+saved static plots for user example runs</p>
+</li>
+<li>
+<p><code>outputs/user_examples/plotly_plots/</code>
+saved interactive and exported Plotly plots for user example runs</p>
+</li>
+<li>
+<p><code>report/</code>
+final report files</p>
+</li>
+<li>
+<p><code>presentation/</code>
+final presentation files</p>
+</li>
+</ul>
+<p>This organization is intended to make the project easy for another user to download, understand, and run.</p>
+<h3 id="23-software-requirements">2.3 Software requirements</h3>
+<p>The code is written in Python and was developed and tested using Python 3.12.12. The workflow is executed from Jupyter Notebook. The numerical and plotting workflow relies on a standard scientific Python environment together with notebook display tools.</p>
+<p>Main packages used in the current implementation are</p>
+<ul>
+<li>NumPy 2.4.0</li>
+<li>SciPy 1.16.3</li>
+<li>Matplotlib 3.10.8</li>
+<li>pandas 2.3.3</li>
+<li>Plotly 6.7.0</li>
+</ul>
+<p>The package list is also provided in <code>requirements.txt</code>. If the user wants to export Plotly figures to PNG files, the local Python environment should also support the Plotly image export backend.</p>
+<h3 id="24-how-to-run-the-code">2.4 How to run the code</h3>
+<p>The main entry point for the project is the top level notebook <code>main.ipynb</code>.</p>
+<p>The normal workflow is</p>
+<ol>
+<li>install the required packages from <code>requirements.txt</code></li>
+<li>open <code>main.ipynb</code></li>
+<li>select a model</li>
+<li>run the notebook cells from top to bottom</li>
+</ol>
+<p>The notebook is set up so that a user can choose a model using a simple selection cell near the top. A typical version of that cell is shown below.</p>
+<pre class="hljs"><code><div>EXAMPLE_MODELS = {
+    <span class="hljs-string">&quot;truss_example_for_user&quot;</span>: <span class="hljs-string">&quot;inputs/user_examples/truss_example_for_user.json&quot;</span>,
+    <span class="hljs-string">&quot;beam_example_for_user&quot;</span>: <span class="hljs-string">&quot;inputs/user_examples/beam_example_for_user.json&quot;</span>,
+    <span class="hljs-string">&quot;validation_3d_truss&quot;</span>: <span class="hljs-string">&quot;inputs/validation/validation_3d_truss.json&quot;</span>,
+    <span class="hljs-string">&quot;validation_3d_frame&quot;</span>: <span class="hljs-string">&quot;inputs/validation/validation_3d_frame.json&quot;</span>,
+    <span class="hljs-string">&quot;fort_griffin_baseline&quot;</span>: <span class="hljs-string">&quot;inputs/final_bridge/fort_griffin_main_span_revised_deadload.json&quot;</span>,
+    <span class="hljs-string">&quot;scenario_missing_diagonal&quot;</span>: <span class="hljs-string">&quot;inputs/final_bridge/scenario_missing_diagonal.json&quot;</span>,
+    <span class="hljs-string">&quot;scenario_weakened_floor_beam&quot;</span>: <span class="hljs-string">&quot;inputs/final_bridge/scenario_weakened_floor_beam_from_deadload.json&quot;</span>,
+}
+
+selected_example = <span class="hljs-string">&quot;truss_example_for_user&quot;</span>
+model_path = EXAMPLE_MODELS[selected_example]
+</div></code></pre>
+<p>In normal use, the user should only need to change the selected model name or <code>model_path</code>. The solver and helper cells below that point should not need to be edited.</p>
+<p>After the model is selected, the notebook</p>
+<ul>
+<li>reads the JSON input file</li>
+<li>preprocesses the structural data</li>
+<li>assembles the global system</li>
+<li>solves for unknown displacements</li>
+<li>recovers reactions and element level quantities</li>
+<li>displays quick result tables</li>
+<li>writes organized output files</li>
+<li>saves static and interactive plots</li>
+</ul>
+<h3 id="25-input-file-structure">2.5 Input file structure</h3>
+<p>Each structural model is defined in a single JSON file. The input file contains the structural information needed to define the problem without changing the source code.</p>
+<p>The main top level blocks used in the current implementation are</p>
+<ul>
+<li><code>model_name</code></li>
+<li><code>units</code></li>
+<li><code>nodes</code></li>
+<li><code>materials</code></li>
+<li><code>sections</code></li>
+<li><code>elements</code></li>
+<li><code>supports</code></li>
+<li><code>nodal_loads</code></li>
+<li><code>member_loads</code></li>
+<li><code>prescribed_displacements</code></li>
+<li><code>temperature_loads</code></li>
+<li><code>fabrication_errors</code></li>
+</ul>
+<p>Their roles are summarized below.</p>
+<ul>
+<li>
+<p><code>nodes</code>
+node coordinates</p>
+</li>
+<li>
+<p><code>materials</code>
+material properties such as elastic modulus, shear modulus, and thermal expansion coefficient</p>
+</li>
+<li>
+<p><code>sections</code>
+cross sectional properties such as area, second moments of area, and torsional constant</p>
+</li>
+<li>
+<p><code>elements</code>
+connectivity, element type, material assignment, and section assignment</p>
+</li>
+<li>
+<p><code>supports</code>
+restrained degrees of freedom</p>
+</li>
+<li>
+<p><code>nodal_loads</code>
+concentrated loads at nodes</p>
+</li>
+<li>
+<p><code>member_loads</code>
+distributed or concentrated element loads supported by the current implementation</p>
+</li>
+<li>
+<p><code>prescribed_displacements</code>
+imposed support movement</p>
+</li>
+<li>
+<p><code>temperature_loads</code>
+thermal loading</p>
+</li>
+<li>
+<p><code>fabrication_errors</code>
+imposed member length error input</p>
+</li>
+</ul>
+<p>Each element is defined as either a <code>3D_truss</code> element or a <code>3D_frame</code> element. This is important because the solver uses the same global workflow but applies different element routines depending on the element type.</p>
+<p>A practical note for new users is that JSON files themselves should remain clean data files. Explanatory comments are better placed in the notebook cells and in the guide files than inside the JSON, since standard JSON does not support comments.</p>
+<h3 id="26-units-and-conventions">2.6 Units and conventions</h3>
+<p>The solver does not perform automatic unit conversion. Every model must be entered in one consistent unit system from start to finish.</p>
+<p>The <code>units</code> block in a JSON file is mainly a label for the user. It documents the intended unit system, but it does not convert values automatically. A model with inconsistent units may still run, but the results will not be physically meaningful.</p>
+<p>Example</p>
+<pre class="hljs"><code><div><span class="hljs-attr">&quot;units&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;length&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ft&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;force&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;kip&quot;</span>
+<span class="hljs-punctuation">}</span>
+</div></code></pre>
+<p>If a model uses <code>ft</code> and <code>kip</code>, then other quantities in that file must also be compatible with that system, such as</p>
+<ul>
+<li>area in <code>ft^2</code></li>
+<li>moment of inertia in <code>ft^4</code></li>
+<li>torsional constant in <code>ft^4</code></li>
+<li>modulus in <code>kip/ft^2</code></li>
+<li>distributed load in <code>kip/ft</code></li>
+<li>moment in <code>kip-ft</code></li>
+</ul>
+<p>If a model uses <code>m</code> and <code>kN</code>, then compatible quantities should be</p>
+<ul>
+<li>area in <code>m^2</code></li>
+<li>moment of inertia in <code>m^4</code></li>
+<li>torsional constant in <code>m^4</code></li>
+<li>modulus in <code>kN/m^2</code></li>
+<li>distributed load in <code>kN/m</code></li>
+<li>moment in <code>kN-m</code></li>
+</ul>
+<p>In the current project, different example files use different consistent unit systems. The bridge files use feet and kips, while several validation files use meters and kilonewtons. A user should not mix values from different examples without converting them first.</p>
+<p>The global structural coordinate system used in the current bridge implementation is</p>
+<ul>
+<li><code>x</code> along the bridge span</li>
+<li><code>y</code> across the bridge width</li>
+<li><code>z</code> vertical</li>
+</ul>
+<p>Each node has six global degrees of freedom</p>
+<ul>
+<li><code>ux</code>, <code>uy</code>, <code>uz</code></li>
+<li><code>rx</code>, <code>ry</code>, <code>rz</code></li>
+</ul>
+<p>Truss elements contribute axial stiffness only. Frame elements contribute axial, bending, and torsional stiffness.</p>
+<h3 id="27-user-starter-examples">2.7 User starter examples</h3>
+<p>To make the project easier for a new user, two small starter models are provided in</p>
+<ul>
+<li><code>inputs/user_examples/truss_example_for_user.json</code></li>
+<li><code>inputs/user_examples/beam_example_for_user.json</code></li>
+</ul>
+<p>A short companion guide is also provided in</p>
+<ul>
+<li><code>inputs/user_examples/user_examples_guide.md</code></li>
+</ul>
+<p>The truss example is meant to show</p>
+<ul>
+<li>node coordinates</li>
+<li>truss connectivity</li>
+<li>one material</li>
+<li>one section</li>
+<li>support definition</li>
+<li>nodal loading</li>
+</ul>
+<p>The beam example is meant to show</p>
+<ul>
+<li>frame element input</li>
+<li>frame section properties</li>
+<li>fixed support definition</li>
+<li>member loading</li>
+<li>bending response</li>
+</ul>
+<p>In this project, a beam is modeled using <code>3D_frame</code> elements.</p>
+<p>These files are intentionally small so that a new user can understand the input structure before moving to validation models or the final bridge model.</p>
+<h3 id="28-how-to-modify-the-input-for-a-new-structure">2.8 How to modify the input for a new structure</h3>
+<p>A new user should be able to analyze a different structure without editing the solver files. The simplest workflow is</p>
+<ol>
+<li>copy one of the included JSON files</li>
+<li>rename it</li>
+<li>edit the contents to match the new structure</li>
+<li>point <code>model_path</code> to the new file in <code>main.ipynb</code></li>
+<li>rerun the notebook</li>
+</ol>
+<p>At minimum, a new file should define</p>
+<ul>
+<li>model name</li>
+<li>units</li>
+<li>nodes</li>
+<li>materials</li>
+<li>sections</li>
+<li>elements</li>
+<li>supports</li>
+</ul>
+<p>After that, the user can add</p>
+<ul>
+<li>nodal loads</li>
+<li>member loads</li>
+<li>prescribed displacements</li>
+<li>temperature loads</li>
+<li>fabrication errors</li>
+</ul>
+<p>For first time users, the easiest starting point is one of the files in <code>inputs/user_examples/</code>. Validation files are also useful, but they are slightly more specialized.</p>
+<h3 id="29-output-produced-by-the-code">2.9 Output produced by the code</h3>
+<p>The project produces both quick notebook outputs and saved output files.</p>
+<p>Inside the notebook, the most useful displayed tables are</p>
+<ul>
+<li>model summary</li>
+<li>node displacement table</li>
+<li>support reaction table</li>
+<li>element local end force table</li>
+<li>element derived results table</li>
+</ul>
+<p>These tables give the user an immediate overview of the model response inside Jupyter.</p>
+<p>For each run, the code also writes a saved output folder to</p>
+<ul>
+<li><code>outputs/runs/&lt;model_name&gt;/</code></li>
+</ul>
+<p>The saved output package typically includes</p>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>dof_summary.json</code></li>
+<li><code>nodal_loads.csv</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_basic_data.csv</code></li>
+<li><code>element_local_displacements.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_global_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+<li><code>run_log.txt</code></li>
+</ul>
+<p>This saved output structure makes it possible to review results later without rerunning the notebook.</p>
+<h3 id="210-plot-files-and-plot-options">2.10 Plot files and plot options</h3>
+<p>The notebook saves both static and interactive plots.</p>
+<p>For user examples, the intended plot locations are</p>
+<ul>
+<li><code>outputs/user_examples/simple_plots/</code></li>
+<li><code>outputs/user_examples/plotly_plots/</code></li>
+</ul>
+<p>For larger validation and bridge studies, plots may also be saved to the main project output folders.</p>
+<p>The plotting workflow supports several useful options.</p>
+<p>Static simple plots can show</p>
+<ul>
+<li>undeformed geometry only</li>
+<li>undeformed plus deformed geometry</li>
+<li>optional node labels</li>
+<li>optional element labels</li>
+</ul>
+<p>Interactive Plotly plots can show</p>
+<ul>
+<li>undeformed geometry only</li>
+<li>undeformed plus deformed geometry</li>
+<li>nodes</li>
+<li>node labels</li>
+<li>element hover information</li>
+<li>optional display of nodal loads</li>
+<li>optional display of support reactions</li>
+<li>optional display of member loads</li>
+</ul>
+<p>These options allow the same code base to produce both report ready figures and interactive inspection views.</p>
+<h3 id="211-how-to-use-the-plotly-view">2.11 How to use the Plotly view</h3>
+<p>The Plotly figure is intended for interactive structural inspection. A user can use it to examine geometry, deformation patterns, and element identity more closely than in a static figure.</p>
+<p>Typical navigation actions are</p>
+<ul>
+<li>zoom in and out</li>
+<li>pan the view</li>
+<li>rotate the 3D view</li>
+<li>hover over elements to inspect their identity</li>
+<li>reset the view</li>
+</ul>
+<p>The interactive Plotly figures are useful for exploration inside the notebook or browser.</p>
+<h3 id="212-how-to-derive-additional-values-in-jupyter">2.12 How to derive additional values in Jupyter</h3>
+<p>The notebook is not limited to the standard displayed tables. A user can also create custom summaries from the saved tables already available in memory after a run.</p>
+<p>For example, the notebook can be used to</p>
+<ul>
+<li>sort nodes by displacement magnitude</li>
+<li>identify the largest support reactions</li>
+<li>rank truss members by axial force</li>
+<li>rank frame members by end moment</li>
+<li>compare two scenarios using selected response quantities</li>
+</ul>
+<p>This makes the notebook useful not only for running a model, but also for interpreting results in a flexible way.</p>
+<h3 id="213-reproducing-the-included-examples">2.13 Reproducing the included examples</h3>
+<p>A user can reproduce any included model by selecting the corresponding file in <code>main.ipynb</code> and running the notebook from top to bottom.</p>
+<p>The most important user example files are</p>
+<ul>
+<li><code>inputs/user_examples/truss_example_for_user.json</code></li>
+<li><code>inputs/user_examples/beam_example_for_user.json</code></li>
+</ul>
+<p>The main validation files include</p>
+<ul>
+<li><code>inputs/validation/validation_3d_truss.json</code></li>
+<li><code>inputs/validation/validation_3d_frame.json</code></li>
+</ul>
+<p>The main final bridge files include</p>
+<ul>
+<li><code>inputs/final_bridge/fort_griffin_main_span_revised_deadload.json</code></li>
+<li><code>inputs/final_bridge/scenario_missing_diagonal.json</code></li>
+<li><code>inputs/final_bridge/scenario_weakened_floor_beam_from_deadload.json</code></li>
+</ul>
+<p>Because the same notebook and the same helper modules are used for all of these cases, a user can move between starter examples, validation studies, and bridge scenarios by changing only the selected model or <code>model_path</code>.</p>
+<p>This user guide is meant to function as a practical setup guide. A student who downloads the repository should be able to choose an included model, run the notebook, inspect the displayed tables, open the saved plots, and locate the saved output files without needing additional explanation.</p>
+<h2 id="3-validation-examples">3. Validation Examples</h2>
+<h3 id="31-3d-truss-validation">3.1 3D truss validation</h3>
+<h4 id="1-problem-description">1. Problem description</h4>
+<p>To validate the three dimensional truss implementation, a true space-truss example was selected from the class notebook and recreated in the project JSON format. This example is more demanding than a simple two-node axial member because it requires the code to handle full 3D geometry, spatial coordinate transformation, assembly of many truss members into one global system, mixed support conditions, and recovery of nodal displacements, reactions, and member axial forces.</p>
+<p>The validation structure is an 18-node space truss with 53 truss members arranged over two elevation levels. External nodal loads are applied at the upper nodes, and the structure is restrained at three support locations. Because the project solver uses a mixed 3D format with six DOFs per node, all nodal rotations were restrained in this truss-only validation model to prevent singularity. This numerical treatment does not change the translational truss behavior being validated.</p>
+<h4 id="2-input-data">2. Input data</h4>
+<p>The validation model uses a consistent mm-kN unit system. The main input data are summarized below.</p>
+<ul>
+<li>
+<p>Number of nodes<br>
+18</p>
+</li>
+<li>
+<p>Number of elements<br>
+53</p>
+</li>
+<li>
+<p>Element type<br>
+all members are <code>3D_truss</code></p>
+</li>
+<li>
+<p>Material property<br>
+<code>E = 200 kN/mm^2</code></p>
+</li>
+<li>
+<p>Section areas<br>
+<code>A1 = 1200 mm^2</code><br>
+<code>A2 = 900 mm^2</code><br>
+<code>A3 = 700 mm^2</code><br>
+<code>A4 = 600 mm^2</code></p>
+</li>
+<li>
+<p>Supports<br>
+node 1 restrained in <code>ux</code>, <code>uy</code>, and <code>uz</code><br>
+node 3 restrained in <code>uy</code> and <code>uz</code><br>
+node 7 restrained in <code>uz</code><br>
+all nodal rotations restrained for solver stability in the mixed 3D framework</p>
+</li>
+<li>
+<p>Applied nodal loads<br>
+nodes 10, 11, and 12 each carry <code>(10, 10, -10) kN</code><br>
+nodes 13, 15, 16, 17, and 18 each carry <code>(5, 0, -10) kN</code><br>
+node 14 carries <code>(5, 0, -50) kN</code></p>
+</li>
+</ul>
+<p>The preprocessed model summary from the notebook run reported 18 nodes, 53 elements, 48 free DOFs, and 60 restrained DOFs. The maximum displacement magnitude in the full model occurred at node 18 and was 6.871995 mm.</p>
+<h4 id="3-benchmark-solution">3. Benchmark solution</h4>
+<p>The class notebook provides benchmark support reactions, maximum nodal displacements, and axial-force values for selected members. These benchmark results are used here as the reference solution.</p>
+<p>The key benchmark quantities are</p>
+<ul>
+<li>
+<p>Node 1 reactions<br>
+<code>Rx = -60.0 kN</code><br>
+<code>Ry = -37.5 kN</code><br>
+<code>Rz = -54.0 kN</code></p>
+</li>
+<li>
+<p>Node 3 reactions<br>
+<code>Rx = 0.0 kN</code><br>
+<code>Ry = 7.5 kN</code><br>
+<code>Rz = 101.0 kN</code></p>
+</li>
+<li>
+<p>Node 7 reactions<br>
+<code>Rx = 0.0 kN</code><br>
+<code>Ry = 0.0 kN</code><br>
+<code>Rz = 83.0 kN</code></p>
+</li>
+<li>
+<p>Maximum displacement in x<br>
+<code>2.6 mm</code> at node 16</p>
+</li>
+<li>
+<p>Maximum displacement in y<br>
+<code>2.8 mm</code> at node 12</p>
+</li>
+<li>
+<p>Maximum displacement in z<br>
+<code>-5.9 mm</code></p>
+</li>
+<li>
+<p>Selected axial-force benchmarks<br>
+element 1<br>
+<code>64.68 kN</code> in tension<br>
+element 29<br>
+<code>38.8 kN</code> in tension<br>
+element 42<br>
+<code>-47.4 kN</code> in compression<br>
+element 52<br>
+<code>45.4 kN</code> in tension</p>
+</li>
+</ul>
+<h4 id="4-corresponding-computer-model-input">4. Corresponding computer-model input</h4>
+<p>The example was recreated as a project input file</p>
+<p><code>inputs/validation/Validation files from previous examples/validation_3d_truss_with_nodal_loads.json</code></p>
+<p>The project input format stores nodes, materials, sections, elements, supports, and nodal loads in a single JSON file. During preprocessing, the model is converted into analysis-ready data structures including the node DOF map, restrained DOF list, free DOF list, and global nodal load vector. The project code is designed so that the user defines the full structural problem in the input file rather than modifying source code. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}</p>
+<h4 id="5-code-results">5. Code results</h4>
+<p>The notebook run produced the following results.</p>
+<p>Key support reactions</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">Rx kN</th>
+<th style="text-align:right">Ry kN</th>
+<th style="text-align:right">Rz kN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">-60.000000</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">-54.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">-2.842171e-14</td>
+<td style="text-align:right">7.500000</td>
+<td style="text-align:right">101.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">7.105427e-15</td>
+<td style="text-align:right">83.0</td>
+</tr>
+</tbody>
+</table>
+<p>The tiny nonzero values at some theoretically zero reactions are numerical roundoff and are effectively zero.</p>
+<p>Maximum nodal displacements</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Node</th>
+<th style="text-align:right">Code value mm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max |ux|</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">2.562893</td>
+</tr>
+<tr>
+<td>max |uy|</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">2.804301</td>
+</tr>
+<tr>
+<td>max |uz|</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">-5.996429</td>
+</tr>
+</tbody>
+</table>
+<p>Selected member axial-force results</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align:right">axial force kN</th>
+<th style="text-align:right">Stress kN/mm²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">64.680266</td>
+<td style="text-align:right">0.053900</td>
+</tr>
+<tr>
+<td>29</td>
+<td style="text-align:right">38.799189</td>
+<td style="text-align:right">0.055427</td>
+</tr>
+<tr>
+<td>42</td>
+<td style="text-align:right">-47.352373</td>
+<td style="text-align:right">0.078921</td>
+</tr>
+<tr>
+<td>52</td>
+<td style="text-align:right">45.449546</td>
+<td style="text-align:right">0.075749</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-comparison-between-benchmark-and-code-output">6. Comparison between benchmark and code output</h4>
+<p>The reaction comparison shows essentially exact agreement to machine precision.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Benchmark</th>
+<th style="text-align:right">Code</th>
+<th style="text-align:right">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 1 Rx kN</td>
+<td style="text-align:right">-60.0</td>
+<td style="text-align:right">-60.000000</td>
+<td style="text-align:right">7.887024e-13</td>
+</tr>
+<tr>
+<td>Node 1 Ry kN</td>
+<td style="text-align:right">-37.5</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">8.384404e-13</td>
+</tr>
+<tr>
+<td>Node 1 Rz kN</td>
+<td style="text-align:right">-54.0</td>
+<td style="text-align:right">-54.000000</td>
+<td style="text-align:right">7.958079e-13</td>
+</tr>
+<tr>
+<td>Node 3 Ry kN</td>
+<td style="text-align:right">7.5</td>
+<td style="text-align:right">7.500000</td>
+<td style="text-align:right">-2.069456e-13</td>
+</tr>
+<tr>
+<td>Node 3 Rz kN</td>
+<td style="text-align:right">101.0</td>
+<td style="text-align:right">101.000000</td>
+<td style="text-align:right">-5.258016e-13</td>
+</tr>
+<tr>
+<td>Node 7 Rz kN</td>
+<td style="text-align:right">83.0</td>
+<td style="text-align:right">83.000000</td>
+<td style="text-align:right">-3.694822e-13</td>
+</tr>
+</tbody>
+</table>
+<p>The displacement comparison also shows close agreement.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Benchmark mm</th>
+<th style="text-align:right">Code mm</th>
+<th style="text-align:right">Difference mm</th>
+<th style="text-align:right">Percent difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max |ux|</td>
+<td style="text-align:right">2.6</td>
+<td style="text-align:right">2.562893</td>
+<td style="text-align:right">-0.037107</td>
+<td style="text-align:right">-1.43%</td>
+</tr>
+<tr>
+<td>max |uy|</td>
+<td style="text-align:right">2.8</td>
+<td style="text-align:right">2.804301</td>
+<td style="text-align:right">0.004301</td>
+<td style="text-align:right">0.15%</td>
+</tr>
+<tr>
+<td>max |uz|</td>
+<td style="text-align:right">-5.9</td>
+<td style="text-align:right">-5.996429</td>
+<td style="text-align:right">-0.096429</td>
+<td style="text-align:right">1.63%</td>
+</tr>
+</tbody>
+</table>
+<p>Selected member axial-force comparisons are also very close.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align:right">Benchmark kN</th>
+<th style="text-align:right">Code kN</th>
+<th style="text-align:right">Difference kN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">64.68</td>
+<td style="text-align:right">64.680266</td>
+<td style="text-align:right">0.000266</td>
+</tr>
+<tr>
+<td>29</td>
+<td style="text-align:right">38.8</td>
+<td style="text-align:right">38.799189</td>
+<td style="text-align:right">-0.000811</td>
+</tr>
+<tr>
+<td>42</td>
+<td style="text-align:right">-47.4</td>
+<td style="text-align:right">-47.352373</td>
+<td style="text-align:right">0.047627</td>
+</tr>
+<tr>
+<td>52</td>
+<td style="text-align:right">45.4</td>
+<td style="text-align:right">45.449546</td>
+<td style="text-align:right">0.049546</td>
+</tr>
+</tbody>
+</table>
+<p>These differences are small and are fully acceptable for validation, especially since the reaction agreement is effectively exact and the displacement differences are within about 1 to 2 percent.</p>
+<h4 id="7-plot">7. Plot</h4>
+<p><img src="../outputs/validation/plotly_plots/validation_3d_truss_with_loads_interactive_undef.png" alt="Validation truss undef">
+Figure X shows the space-truss validation model in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red with an amplified scale factor to make the structural response visible. The figure confirms that the model behaves as a true 3D truss system and provides a clear visual check of the deformation pattern under the applied nodal loads.
+<img src="../outputs/validation/plotly_plots/validation_3d_truss_with_loads_interactive_def+undef.png" alt="Validation truss plot">
+Figure X. 3D truss validation model showing undeformed and deformed geometry.</p>
+<h4 id="8-saved-outputs">8. Saved outputs</h4>
+<p>This run also generated the standard saved project outputs in the run folder for the model. The project output system writes organized result files including nodal displacements, support reactions, local and global element force tables, derived element results, a markdown summary, and machine-readable JSON summaries. This saved-output structure is useful because it allows the validation case to be reviewed later without rerunning the notebook.</p>
+<h4 id="9-interpretation-statement">9. Interpretation statement</h4>
+<p>This validation example confirms that the current project solver reproduces the expected behavior of a true 3D truss system with very good accuracy. The near-exact support reactions, the close agreement in maximum nodal displacements, and the strong agreement in selected member axial forces together indicate that the implementation is correctly handling 3D truss geometry, local-to-global transformation, stiffness assembly, support conditions, solution of the global system, and axial-force recovery.</p>
+<h3 id="32-3d-frame-validation">3.2 3D frame validation</h3>
+<h4 id="1-problem-description-1">1. Problem description</h4>
+<p>To validate the three dimensional frame implementation, a small portal-style frame example from the class notebook was recreated in the project JSON format. The example consists of two frame elements and three nodes. The first member is vertical and the second member is horizontal. The loading combines a uniform member load on the vertical member and a midpoint point load on the horizontal member. This case is a useful benchmark because it checks whether the solver can correctly handle frame stiffness assembly, member loading, local-to-global transformation, and recovery of local end forces in a compact model.</p>
+<p>This baseline frame case is intentionally unreleased. Member release behavior is verified separately in the special-feature section.</p>
+<h4 id="2-input-data-1">2. Input data</h4>
+<p>The validation model uses a consistent m-kN unit system. The main input data are summarized below.</p>
+<ul>
+<li>
+<p>Number of nodes<br>
+3</p>
+</li>
+<li>
+<p>Number of elements<br>
+2</p>
+</li>
+<li>
+<p>Element type<br>
+both members are <code>3D_frame</code></p>
+</li>
+<li>
+<p>Material properties<br>
+<code>E = 200000000.0 kN/m^2</code><br>
+<code>G = 76923076.92307693 kN/m^2</code></p>
+</li>
+<li>
+<p>Section properties<br>
+<code>A = 0.00474 m^2</code><br>
+<code>Iy = 2.22e-05 m^4</code><br>
+<code>Iz = 2.22e-05 m^4</code><br>
+<code>J = 2.22e-05 m^4</code></p>
+</li>
+<li>
+<p>Node coordinates<br>
+node 1  <code>(0.0, 0.0, 0.0)</code><br>
+node 2  <code>(0.0, 10.0, 0.0)</code><br>
+node 3  <code>(8.0, 10.0, 0.0)</code></p>
+</li>
+<li>
+<p>Supports<br>
+node 1 fixed<br>
+node 3 restrained in translation with free rotation about z<br>
+out-of-plane DOFs restrained consistently with the 3D embedding</p>
+</li>
+<li>
+<p>Applied member loads<br>
+element 1<br>
+<code>uniform_local_y = -24.0 kN/m</code><br>
+element 2<br>
+<code>point_local_y_midspan = -75.0 kN</code></p>
+</li>
+</ul>
+<p>The preprocessed model summary reported 3 nodes, 2 elements, 4 free DOFs, and 14 restrained DOFs. The maximum displacement magnitude occurred at node 2 and was 0.001128 m.</p>
+<h4 id="3-benchmark-solution-1">3. Benchmark solution</h4>
+<p>The class notebook provides benchmark displacements, support reactions, and local element end forces for this frame example. These are used here as the reference solution.</p>
+<p>Key benchmark quantities are</p>
+<ul>
+<li>
+<p>Node 2<br>
+<code>ux = -0.000955147309 m</code><br>
+<code>uy = 0.000599487331 m</code><br>
+<code>rz = -0.025390966887 rad</code></p>
+</li>
+<li>
+<p>Node 3<br>
+<code>rz = -0.021200704215 rad</code></p>
+</li>
+<li>
+<p>Node 1 reactions<br>
+<code>Rx = 126.81504382729 kN</code><br>
+<code>Ry = -56.831398945727 kN</code><br>
+<code>Mz = -222.801629838714 kN-m</code></p>
+</li>
+<li>
+<p>Node 3 reactions<br>
+<code>Rx = 113.18495617271 kN</code><br>
+<code>Ry = -18.168601054273 kN</code></p>
+</li>
+<li>
+<p>Element 1 local end-force benchmark<br>
+<code>[-56.831398945727, -126.81504382729, 0.0, 0.0, 0.0, -222.801629838714, 56.831398945727, -113.18495617271, 0.0, 0.0, 0.0, 154.651191565815]</code></p>
+</li>
+<li>
+<p>Element 2 local end-force benchmark<br>
+<code>[-113.1849561727, -56.83139894573, 0.0, 0.0, 0.0, -154.6511915658, 113.1849561727, -18.16860105427, 0.0, 0.0, 0.0, 0.0]</code></p>
+</li>
+</ul>
+<h4 id="4-corresponding-computer-model-input-1">4. Corresponding computer-model input</h4>
+<p>The example was recreated as a project input file</p>
+<p><code>inputs/validation/Validation files from previous examples/validation_3d_frame_with_member_loads.json</code></p>
+<p>The model was embedded in the project’s mixed 3D framework by placing the frame in the global x-y plane with <code>z = 0</code>. This allowed the same project solver to analyze the frame while preserving the original 2D benchmark behavior.</p>
+<h4 id="5-code-results-1">5. Code results</h4>
+<p>The notebook run produced the following results.</p>
+<p>Key nodal displacements</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">ux m</th>
+<th style="text-align:right">uy m</th>
+<th style="text-align:right">rz rad</th>
+<th style="text-align:right">disp_mag m</th>
+<th style="text-align:right">rot_mag rad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td style="text-align:right">-0.000955</td>
+<td style="text-align:right">0.000599</td>
+<td style="text-align:right">-0.025391</td>
+<td style="text-align:right">0.001128</td>
+<td style="text-align:right">0.025391</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">-0.021201</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.021201</td>
+</tr>
+</tbody>
+</table>
+<p>Key support reactions</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">Rx kN</th>
+<th style="text-align:right">Ry kN</th>
+<th style="text-align:right">Rz kN</th>
+<th style="text-align:right">Mx kN-m</th>
+<th style="text-align:right">My kN-m</th>
+<th style="text-align:right">Mz kN-m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">126.815044</td>
+<td style="text-align:right">-56.831399</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">-222.801630</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">113.184956</td>
+<td style="text-align:right">-18.168601</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+</tr>
+</tbody>
+</table>
+<p>Local element end forces</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align:right">Fx_i</th>
+<th style="text-align:right">Fy_i</th>
+<th style="text-align:right">Fz_i</th>
+<th style="text-align:right">Mx_i</th>
+<th style="text-align:right">My_i</th>
+<th style="text-align:right">Mz_i</th>
+<th style="text-align:right">Fx_j</th>
+<th style="text-align:right">Fy_j</th>
+<th style="text-align:right">Fz_j</th>
+<th style="text-align:right">Mx_j</th>
+<th style="text-align:right">My_j</th>
+<th style="text-align:right">Mz_j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">-56.831399</td>
+<td style="text-align:right">-126.815044</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">-222.801630</td>
+<td style="text-align:right">56.831399</td>
+<td style="text-align:right">-113.184956</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">154.651192</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">-113.184956</td>
+<td style="text-align:right">-56.831399</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">-154.651192</td>
+<td style="text-align:right">113.184956</td>
+<td style="text-align:right">-18.168601</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-comparison-between-benchmark-and-code-output-1">6. Comparison between benchmark and code output</h4>
+<p>The displacement and reaction comparisons show essentially exact agreement.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Benchmark</th>
+<th style="text-align:right">Code</th>
+<th style="text-align:right">Difference</th>
+<th style="text-align:right">Percent difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 2 ux</td>
+<td style="text-align:right">-0.000955147309</td>
+<td style="text-align:right">-0.000955147309</td>
+<td style="text-align:right">-4.743466e-13</td>
+<td style="text-align:right">4.966214e-08</td>
+</tr>
+<tr>
+<td>Node 2 uy</td>
+<td style="text-align:right">0.000599487331</td>
+<td style="text-align:right">0.000599487331</td>
+<td style="text-align:right">-3.488723e-13</td>
+<td style="text-align:right">-5.819511e-08</td>
+</tr>
+<tr>
+<td>Node 2 rz</td>
+<td style="text-align:right">-0.025390966887</td>
+<td style="text-align:right">-0.025390966887</td>
+<td style="text-align:right">2.090030e-13</td>
+<td style="text-align:right">-8.231390e-10</td>
+</tr>
+<tr>
+<td>Node 3 rz</td>
+<td style="text-align:right">-0.021200704215</td>
+<td style="text-align:right">-0.021200704215</td>
+<td style="text-align:right">1.146305e-13</td>
+<td style="text-align:right">-5.406921e-10</td>
+</tr>
+<tr>
+<td>Node 1 Rx</td>
+<td style="text-align:right">126.81504382729</td>
+<td style="text-align:right">126.81504382729</td>
+<td style="text-align:right">-8.526513e-14</td>
+<td style="text-align:right">-6.723582e-14</td>
+</tr>
+<tr>
+<td>Node 1 Ry</td>
+<td style="text-align:right">-56.831398945727</td>
+<td style="text-align:right">-56.831398945727</td>
+<td style="text-align:right">9.947598e-14</td>
+<td style="text-align:right">-1.750370e-13</td>
+</tr>
+<tr>
+<td>Node 1 Mz</td>
+<td style="text-align:right">-222.801629838714</td>
+<td style="text-align:right">-222.801629838714</td>
+<td style="text-align:right">-3.694822e-13</td>
+<td style="text-align:right">1.658346e-13</td>
+</tr>
+<tr>
+<td>Node 3 Rx</td>
+<td style="text-align:right">113.18495617271</td>
+<td style="text-align:right">113.18495617271</td>
+<td style="text-align:right">7.105427e-14</td>
+<td style="text-align:right">6.277714e-14</td>
+</tr>
+<tr>
+<td>Node 3 Ry</td>
+<td style="text-align:right">-18.168601054273</td>
+<td style="text-align:right">-18.168601054273</td>
+<td style="text-align:right">-9.592327e-14</td>
+<td style="text-align:right">5.279618e-13</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end forces also matched the benchmark values to numerical precision.</p>
+<h4 id="7-plot-1">7. Plot</h4>
+<p>Figure X shows the baseline 3D frame validation model in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red. The updated plotting helper now displays the deformed frame centerline with curvature, so the bending shape is visible rather than being shown only as a straight chord between end nodes.</p>
+<p><img src="../outputs/validation/simple_plots/3D_frame_validation.png" alt="3D frame validation"></p>
+<p>If you want to also show the interactive-style figure in markdown, use</p>
+<p><img src="../outputs/validation/plotly_plots/validation_3d_frame_interactive_valid.png" alt="Validation 3D frame interactive"></p>
+<p>Use only the image that exported correctly.</p>
+<h4 id="8-saved-outputs-1">8. Saved outputs</h4>
+<p>This run generated the standard saved project outputs in the run folder for the model. The saved output package includes nodal displacement tables, support reaction tables, local and global element force tables, derived response tables, and summary files. This organized output structure is useful because it allows the validation case to be reviewed later without rerunning the notebook.</p>
+<p>Typical saved files for this case include</p>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_global_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+</ul>
+<h4 id="9-interpretation-statement-1">9. Interpretation statement</h4>
+<p>This validation example confirms that the current project solver reproduces the expected response of a small 3D frame benchmark with very high accuracy. The essentially exact agreement in nodal displacements, support reactions, and local element end forces indicates that the implementation is correctly handling 3D frame stiffness assembly, local-to-global transformation, member loading, system solution, and frame-force recovery.</p>
+<h3 id="331-moment-release-verification">3.3.1 Moment release verification</h3>
+<h4 id="1-problem-description-2">1. Problem description</h4>
+<p>To verify member release behavior, a small frame example with a hinge at the beam-column joint was recreated from the class notebook. The model consists of a vertical column connected to a horizontal beam. The goal of this case is to confirm that the released joint does not transfer bending moment while the rest of the frame still carries the expected axial force, shear force, and support reactions.</p>
+<p>This case is based on the class hinge example, but the project implementation reproduces the hinge behavior using released frame ends in the element input together with a stabilizing restrained rotational DOF at node 2. The release implementation in the project code is an element-level released-end formulation using static condensation, rather than lecture Method A or Method B.</p>
+<h4 id="2-input-data-2">2. Input data</h4>
+<p>The validation model uses a consistent m-kN unit system. The main input data are listed below.</p>
+<ul>
+<li>number of nodes, 3</li>
+<li>number of elements, 2</li>
+<li>element type, both members are <code>3D_frame</code></li>
+<li>material properties<br>
+<code>E = 200000000.0 kN/m^2</code><br>
+<code>G = 76923076.92307693 kN/m^2</code></li>
+<li>section properties<br>
+<code>A = 0.00474 m^2</code><br>
+<code>Iy = 2.22e-05 m^4</code><br>
+<code>Iz = 2.22e-05 m^4</code><br>
+<code>J = 2.22e-05 m^4</code></li>
+</ul>
+<p>Node coordinates</p>
+<ul>
+<li>node 1, <code>(0.0, 0.0, 0.0)</code></li>
+<li>node 2, <code>(0.0, 10.0, 0.0)</code></li>
+<li>node 3, <code>(8.0, 10.0, 0.0)</code></li>
+</ul>
+<p>Supports</p>
+<ul>
+<li>node 1 fixed</li>
+<li>node 3 restrained in translation with free in-plane rotation</li>
+<li>node 2 <code>rz</code> restrained as the stabilizing rotational DOF for the released-joint verification case</li>
+</ul>
+<p>Member loads</p>
+<ul>
+<li>element 1, <code>uniform_local_y = -24.0 kN/m</code></li>
+<li>element 2, <code>point_local_y_midspan = -75.0 kN</code></li>
+</ul>
+<p>Release definitions</p>
+<ul>
+<li>element 1, end release at node 2</li>
+<li>element 2, start release at node 2</li>
+</ul>
+<h4 id="3-benchmark-solution-2">3. Benchmark solution</h4>
+<p>The class notebook provides the expected frame response for the released-joint case. The main benchmark quantities used for comparison are the support reactions, the approximate nodal displacements, and the local member end-force pattern.</p>
+<p>Key benchmark values are</p>
+<ul>
+<li>
+<p>node 1 reactions<br>
+<code>Rx = 150.010 kN</code><br>
+<code>Ry = -37.500 kN</code><br>
+<code>Mz = -300.101 kN-m</code></p>
+</li>
+<li>
+<p>node 3 reactions<br>
+<code>Rx = 89.990 kN</code><br>
+<code>Ry = -37.500 kN</code></p>
+</li>
+<li>
+<p>node 2 displacement, approximately<br>
+<code>ux ≈ -0.001 m</code><br>
+<code>uy ≈ 0.001 m</code></p>
+</li>
+<li>
+<p>node 3 rotation, approximately<br>
+<code>rz ≈ -0.068 rad</code></p>
+</li>
+<li>
+<p>released-end local moments should be zero</p>
+</li>
+</ul>
+<h4 id="4-corresponding-computer-model-input-2">4. Corresponding computer-model input</h4>
+<p>The case was recreated as</p>
+<p><code>inputs/validation/Validation files from previous examples/verification_moment_release_frame.json</code></p>
+<p>The frame was placed in the global x-y plane with <code>z = 0</code>, so the same mixed 3D solver could be used while preserving the original planar benchmark behavior.</p>
+<h4 id="5-code-results-2">5. Code results</h4>
+<p>The notebook run produced the following key results.</p>
+<p>Model summary</p>
+<ul>
+<li>model name, <code>verification_moment_release_frame</code></li>
+<li>nodes, 3</li>
+<li>elements, 2</li>
+<li>free DOFs, 3</li>
+<li>restrained DOFs, 15</li>
+<li>maximum displacement node, 2</li>
+<li>maximum displacement magnitude, <code>0.000856 m</code></li>
+</ul>
+<p>Key nodal displacements</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">ux m</th>
+<th style="text-align:right">uy m</th>
+<th style="text-align:right">rz rad</th>
+<th style="text-align:right">disp_mag m</th>
+<th style="text-align:right">rot_mag rad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td style="text-align:right">-0.000759</td>
+<td style="text-align:right">0.000396</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.000856</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">-0.067617</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.067617</td>
+</tr>
+</tbody>
+</table>
+<p>Key support reactions</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">Rx kN</th>
+<th style="text-align:right">Ry kN</th>
+<th style="text-align:right">Rz kN</th>
+<th style="text-align:right">Mx kN-m</th>
+<th style="text-align:right">My kN-m</th>
+<th style="text-align:right">Mz kN-m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">150.010115</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">-300.101153</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">89.989885</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Local element end forces</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align:right">Fx_i</th>
+<th style="text-align:right">Fy_i</th>
+<th style="text-align:right">Mz_i</th>
+<th style="text-align:right">Fx_j</th>
+<th style="text-align:right">Fy_j</th>
+<th style="text-align:right">Mz_j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">-150.010115</td>
+<td style="text-align:right">-300.101153</td>
+<td style="text-align:right">37.500000</td>
+<td style="text-align:right">-89.989885</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">-89.989885</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">89.989885</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The released-end moments are exactly zero in the project output.</p>
+<h4 id="6-comparison-between-benchmark-and-code-output-2">6. Comparison between benchmark and code output</h4>
+<p>The reaction comparison shows essentially exact agreement.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Benchmark</th>
+<th style="text-align:right">Code</th>
+<th style="text-align:right">Difference</th>
+<th style="text-align:right">Percent difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 1 Rx</td>
+<td style="text-align:right">150.010</td>
+<td style="text-align:right">150.010115</td>
+<td style="text-align:right">0.000115</td>
+<td style="text-align:right">0.000077</td>
+</tr>
+<tr>
+<td>Node 1 Ry</td>
+<td style="text-align:right">-37.500</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+<tr>
+<td>Node 1 Mz</td>
+<td style="text-align:right">-300.101</td>
+<td style="text-align:right">-300.101153</td>
+<td style="text-align:right">-0.000153</td>
+<td style="text-align:right">0.000051</td>
+</tr>
+<tr>
+<td>Node 3 Rx</td>
+<td style="text-align:right">89.990</td>
+<td style="text-align:right">89.989885</td>
+<td style="text-align:right">-0.000115</td>
+<td style="text-align:right">-0.000128</td>
+</tr>
+<tr>
+<td>Node 3 Ry</td>
+<td style="text-align:right">-37.500</td>
+<td style="text-align:right">-37.500000</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The displacement comparison is also reasonable, but it should be interpreted carefully because the benchmark displacement values in the notebook were only reported approximately to three decimal places.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Approx. benchmark</th>
+<th style="text-align:right">Code</th>
+<th style="text-align:right">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 2 ux</td>
+<td style="text-align:right">-0.001</td>
+<td style="text-align:right">-0.000759</td>
+<td style="text-align:right">0.000241</td>
+</tr>
+<tr>
+<td>Node 2 uy</td>
+<td style="text-align:right">0.001</td>
+<td style="text-align:right">0.000396</td>
+<td style="text-align:right">-0.000604</td>
+</tr>
+<tr>
+<td>Node 3 rz</td>
+<td style="text-align:right">-0.068</td>
+<td style="text-align:right">-0.067617</td>
+<td style="text-align:right">0.000383</td>
+</tr>
+</tbody>
+</table>
+<p>The most important verification result is the released-end moment check.</p>
+<table>
+<thead>
+<tr>
+<th>Released moment quantity</th>
+<th style="text-align:right">Expected</th>
+<th style="text-align:right">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element 1, <code>Mz_j_local</code></td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+</tr>
+<tr>
+<td>Element 2, <code>Mz_i_local</code></td>
+<td style="text-align:right">0.0</td>
+<td style="text-align:right">0.0</td>
+</tr>
+</tbody>
+</table>
+<p>This confirms that the joint hinge is functioning correctly in the project model.</p>
+<h4 id="7-plot-2">7. Plot</h4>
+<p>Figure X shows the released-joint frame in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red. The deformed shape displays a clear change in slope at node 2, which is consistent with hinge behavior. The updated plotting helper also shows curved frame deformation rather than a straight chord between end nodes.</p>
+<p>Use this markdown image line for the simple figure</p>
+<p><img src="../outputs/validation/simple_plots/verification_moment_release_frame.png" alt="Figure X. Moment release verification showing undeformed and deformed geometry"></p>
+<p>If you also want the interactive-style view in markdown, use</p>
+<p><img src="../outputs/validation/plotly_plots/verification_moment_release_frame.png" alt="Figure X alternate. Moment release verification interactive view"></p>
+<p>The simple figure is cleaner for the report. The interactive-style figure is useful as a supporting figure.</p>
+<h4 id="8-saved-outputs-2">8. Saved outputs</h4>
+<p>This run generated the standard saved project outputs in the model run folder, including nodal displacement tables, support reaction tables, local and global element force tables, derived element results, and summary files. The output-writing path is part of the current project framework, so this verification case can be reviewed later without rerunning the notebook. :contentReference[oaicite:2]{index=2}</p>
+<p>Typical saved files for this case include</p>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_global_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+</ul>
+<h4 id="9-interpretation-statement-2">9. Interpretation statement</h4>
+<p>This verification case confirms that the current project implementation reproduces the expected behavior of a frame with a released beam-column joint. The support reactions match the benchmark essentially exactly, the deformed shape is qualitatively consistent with a hinge at node 2, and the released-end local moments are exactly zero in the project output. Together, these results show that the member release implementation is functioning correctly for this validation case.</p>
+<h3 id="332-uniform-temperature-verification">3.3.2 Uniform temperature verification</h3>
+<h4 id="1-problem-description-3">1. Problem description</h4>
+<p>To verify uniform temperature loading, the same small frame used in the earlier frame benchmark was analyzed with uniform temperature changes applied to both members. This case was chosen because the final project requires uniform temperature loading, and the modified notebook solution provides a direct benchmark for comparison. The frame consists of one vertical member and one horizontal member, and the original mechanical member loads were kept so that the thermal effects could be checked within a combined mechanical and thermal response case.</p>
+<h4 id="2-input-data-3">2. Input data</h4>
+<p>The model uses a consistent m-kN unit system. The geometry, supports, and mechanical loads are the same as the baseline frame case.</p>
+<p>Node coordinates</p>
+<ul>
+<li>node 1  <code>(0.0, 0.0, 0.0)</code></li>
+<li>node 2  <code>(0.0, 10.0, 0.0)</code></li>
+<li>node 3  <code>(8.0, 10.0, 0.0)</code></li>
+</ul>
+<p>Material and section properties</p>
+<ul>
+<li><code>E = 200000000.0 kN/m^2</code></li>
+<li><code>G = 76923076.92307693 kN/m^2</code></li>
+<li><code>alpha = 0.000012 1/C</code></li>
+<li><code>A = 0.00474 m^2</code></li>
+<li><code>Iy = 2.22e-05 m^4</code></li>
+<li><code>Iz = 2.22e-05 m^4</code></li>
+<li><code>J = 2.22e-05 m^4</code></li>
+</ul>
+<p>Mechanical member loads</p>
+<ul>
+<li>element 1  <code>uniform_local_y = -24.0 kN/m</code></li>
+<li>element 2  <code>point_local_y_midspan = -75.0 kN</code></li>
+</ul>
+<p>Uniform temperature loads</p>
+<ul>
+<li>element 1  <code>deltaT = 10.0 C</code></li>
+<li>element 2  <code>deltaT = 5.0 C</code></li>
+</ul>
+<p>Supports</p>
+<ul>
+<li>node 1 fixed</li>
+<li>node 3 restrained in translation with free in-plane rotation</li>
+<li>out-of-plane DOFs restrained consistently with the 3D embedding</li>
+</ul>
+<h4 id="3-benchmark-solution-3">3. Benchmark solution</h4>
+<p>The benchmark was taken from the modified notebook case in which both members were assigned uniform temperature changes. The main benchmark quantities used for comparison were the nodal displacements at nodes 2 and 3, the support reactions at nodes 1 and 3, and the local element end-force results for both members.</p>
+<p>Benchmark displacement values from the notebook were</p>
+<ul>
+<li>node 2  <code>ux = 0.00047544 m</code></li>
+<li>node 2  <code>uy = 0.00060026 m</code></li>
+<li>node 2  <code>rz = 0.02535554 rad</code></li>
+<li>node 3  <code>rz = 0.02099346 rad</code></li>
+</ul>
+<p>Benchmark support reactions were</p>
+<ul>
+<li>node 1  <code>Rx = -126.780047 kN</code></li>
+<li>node 1  <code>Ry = 56.855238 kN</code></li>
+<li>node 1  <code>Mz = 222.642377 kN-m</code></li>
+<li>node 3  <code>Rx = -113.219953 kN</code></li>
+<li>node 3  <code>Ry = 18.144762 kN</code></li>
+</ul>
+<p>Benchmark local element end forces were</p>
+<p>Element 1</p>
+<ul>
+<li><code>N_i = 56.855238</code></li>
+<li><code>V_i = 126.780047</code></li>
+<li><code>M_i = 222.642377</code></li>
+<li><code>N_j = -56.855238</code></li>
+<li><code>V_j = 113.219953</code></li>
+<li><code>M_j = -154.841903</code></li>
+</ul>
+<p>Element 2</p>
+<ul>
+<li><code>N_i = 113.219953</code></li>
+<li><code>V_i = 56.855238</code></li>
+<li><code>M_i = 154.841903</code></li>
+<li><code>N_j = -113.219953</code></li>
+<li><code>V_j = 18.144762</code></li>
+<li><code>M_j = 0.000000</code></li>
+</ul>
+<h4 id="4-corresponding-computer-model-input-3">4. Corresponding computer-model input</h4>
+<p>The case was recreated as</p>
+<p><code>inputs/validation/Validation files from previous examples/verification_uniform_temperature_frame.json</code></p>
+<p>The frame was placed in the global x-y plane with <code>z = 0</code>, so the same mixed 3D solver could be used while preserving the original planar benchmark behavior. The model uses the current project temperature input format based on element-wise <code>deltaT</code>, which is fully aligned with the final project scope.</p>
+<h4 id="5-code-results-3">5. Code results</h4>
+<p>The project run produced the following key nodal results.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">ux m</th>
+<th style="text-align:right">uy m</th>
+<th style="text-align:right">rz rad</th>
+<th style="text-align:right">disp_mag m</th>
+<th style="text-align:right">rot_mag rad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td style="text-align:right">0.00047544</td>
+<td style="text-align:right">0.00060026</td>
+<td style="text-align:right">0.02535554</td>
+<td style="text-align:right">0.00076571</td>
+<td style="text-align:right">0.02535554</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">0.00000000</td>
+<td style="text-align:right">0.00000000</td>
+<td style="text-align:right">0.02099346</td>
+<td style="text-align:right">0.00000000</td>
+<td style="text-align:right">0.02099346</td>
+</tr>
+</tbody>
+</table>
+<p>The support reactions were</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">Rx kN</th>
+<th style="text-align:right">Ry kN</th>
+<th style="text-align:right">Mz kN-m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">-126.780047</td>
+<td style="text-align:right">56.855238</td>
+<td style="text-align:right">222.642377</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">-113.219953</td>
+<td style="text-align:right">18.144762</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end-force results were</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align:right">Fx_i</th>
+<th style="text-align:right">Fy_i</th>
+<th style="text-align:right">Mz_i</th>
+<th style="text-align:right">Fx_j</th>
+<th style="text-align:right">Fy_j</th>
+<th style="text-align:right">Mz_j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">56.855238</td>
+<td style="text-align:right">126.780047</td>
+<td style="text-align:right">222.642377</td>
+<td style="text-align:right">-56.855238</td>
+<td style="text-align:right">113.219953</td>
+<td style="text-align:right">-154.841903</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">113.219953</td>
+<td style="text-align:right">56.855238</td>
+<td style="text-align:right">154.841903</td>
+<td style="text-align:right">-113.219953</td>
+<td style="text-align:right">18.144762</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-comparison-between-benchmark-and-code-output-3">6. Comparison between benchmark and code output</h4>
+<p>The comparison shows essentially exact agreement between the project code and the notebook benchmark.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Benchmark</th>
+<th style="text-align:right">Code</th>
+<th style="text-align:right">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 2 ux</td>
+<td style="text-align:right">0.00047544</td>
+<td style="text-align:right">0.00047544</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 2 uy</td>
+<td style="text-align:right">0.00060026</td>
+<td style="text-align:right">0.00060026</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 2 rz</td>
+<td style="text-align:right">0.02535554</td>
+<td style="text-align:right">0.02535554</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 3 rz</td>
+<td style="text-align:right">0.02099346</td>
+<td style="text-align:right">0.02099346</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 1 Rx</td>
+<td style="text-align:right">-126.780047</td>
+<td style="text-align:right">-126.780047</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 1 Ry</td>
+<td style="text-align:right">56.855238</td>
+<td style="text-align:right">56.855238</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 1 Mz</td>
+<td style="text-align:right">222.642377</td>
+<td style="text-align:right">222.642377</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 3 Rx</td>
+<td style="text-align:right">-113.219953</td>
+<td style="text-align:right">-113.219953</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 3 Ry</td>
+<td style="text-align:right">18.144762</td>
+<td style="text-align:right">18.144762</td>
+<td style="text-align:right">about 0</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end-force results also match the benchmark values. After correcting the project temperature fixed-end-force sign, the thermal contribution assembled by the project matched the notebook thermal extra vector exactly, confirming that the uniform temperature implementation is now consistent with the benchmark solution.</p>
+<h4 id="7-plot-3">7. Plot</h4>
+<p>Figure X shows the uniform temperature verification case in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red. The deformed shape differs from the baseline mechanical case because the members now experience restrained thermal expansion in addition to the mechanical loads.</p>
+<p><img src="../outputs/validation/simple_plots/verification_uniform_temperature_frame.png" alt="Figure X. Uniform temperature verification showing undeformed and deformed geometry"></p>
+<p>If you also want the interactive-style figure in markdown, use</p>
+<p><img src="../outputs/validation/plotly_plots/verification_uniform_temperature_frame_for_report.png" alt="Verification uniform temperature frame"></p>
+<h4 id="8-saved-outputs-3">8. Saved outputs</h4>
+<p>This run generated the standard saved output package for the model, including nodal displacement tables, support reaction tables, local and global element force tables, derived response tables, and summary files. The organized saved-output structure makes it easy to review the temperature case later without rerunning the notebook.</p>
+<p>Typical saved files for this case include</p>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_global_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+</ul>
+<h4 id="9-interpretation-statement-3">9. Interpretation statement</h4>
+<p>This case confirms that the project implementation of uniform temperature loading is working correctly. The nodal displacements, support reactions, and local element end forces all match the benchmark notebook solution, and the assembled thermal fixed-end contribution was confirmed to be identical to the notebook thermal extra vector after the project sign correction. Together, these results show that the project solver is correctly incorporating uniform thermal strain effects through the element fixed-end-force formulation.</p>
+<h3 id="333-support-settlement-verification">3.3.3 Support settlement verification</h3>
+<h4 id="1-problem-description-4">1. Problem description</h4>
+<p>This verification case checks whether the code correctly handles prescribed support displacements in a frame model. The same small frame used in the earlier frame benchmark was analyzed, but three prescribed support motions were added. The case includes the original mechanical member loads together with imposed support settlement and rotation. This example is important because the final project requires the code to handle prescribed support displacements as part of the general direct stiffness workflow.</p>
+<h4 id="2-input-data-4">2. Input data</h4>
+<p>The model uses a consistent m-kN unit system. The frame geometry and mechanical loading are the same as the baseline frame case.</p>
+<p>Node coordinates</p>
+<ul>
+<li>node 1 <code>(0.0, 0.0, 0.0)</code></li>
+<li>node 2 <code>(0.0, 10.0, 0.0)</code></li>
+<li>node 3 <code>(8.0, 10.0, 0.0)</code></li>
+</ul>
+<p>Material and section properties</p>
+<ul>
+<li><code>E = 200000000.0 kN/m^2</code></li>
+<li><code>G = 76923076.92307693 kN/m^2</code></li>
+<li><code>A = 0.00474 m^2</code></li>
+<li><code>Iy = 2.22e-05 m^4</code></li>
+<li><code>Iz = 2.22e-05 m^4</code></li>
+<li><code>J = 2.22e-05 m^4</code></li>
+</ul>
+<p>Mechanical member loads</p>
+<ul>
+<li>element 1 <code>uniform_local_y = -24.0 kN/m</code></li>
+<li>element 2 <code>point_local_y_midspan = -75.0 kN</code></li>
+</ul>
+<p>Prescribed support motions</p>
+<ul>
+<li>node 1 <code>rz = 0.01 rad</code></li>
+<li>node 3 <code>ux = 0.005 m</code></li>
+<li>node 3 <code>uy = -0.01 m</code></li>
+</ul>
+<p>Supports</p>
+<ul>
+<li>node 1 fixed</li>
+<li>node 3 restrained in translation with free in-plane rotation</li>
+<li>out-of-plane DOFs restrained consistently with the 3D embedding</li>
+</ul>
+<h4 id="3-benchmark-solution-4">3. Benchmark solution</h4>
+<p>The benchmark values were taken from the verified notebook solution for the support-settlement example.</p>
+<p>Benchmark displacements</p>
+<ul>
+<li>node 2 <code>ux = 0.00593846 m</code></li>
+<li>node 2 <code>uy = -0.00059439 m</code></li>
+<li>node 2 <code>rz = 0.02181937 rad</code></li>
+<li>node 3 <code>rz = 0.02111055 rad</code></li>
+</ul>
+<p>Benchmark reactions</p>
+<ul>
+<li>node 1 <code>Rx = -128.793081 kN</code></li>
+<li>node 1 <code>Ry = 56.348349 kN</code></li>
+<li>node 1 <code>Mz = 238.717605 kN-m</code></li>
+<li>node 3 <code>Rx = -111.206919 kN</code></li>
+<li>node 3 <code>Ry = 18.651651 kN</code></li>
+</ul>
+<p>Benchmark local element end forces</p>
+<p>Element 1</p>
+<ul>
+<li><code>N_i = 56.348349</code></li>
+<li><code>V_i = 128.793081</code></li>
+<li><code>M_i = 238.717605</code></li>
+<li><code>N_j = -56.348349</code></li>
+<li><code>V_j = 111.206919</code></li>
+<li><code>M_j = -150.786794</code></li>
+</ul>
+<p>Element 2</p>
+<ul>
+<li><code>N_i = 111.206919</code></li>
+<li><code>V_i = 56.348349</code></li>
+<li><code>M_i = 150.786794</code></li>
+<li><code>N_j = -111.206919</code></li>
+<li><code>V_j = 18.651651</code></li>
+<li><code>M_j = 0.000000</code></li>
+</ul>
+<h4 id="4-corresponding-computer-model-input-4">4. Corresponding computer model input</h4>
+<p>The case was recreated in the project as</p>
+<p><code>inputs/validation/Validation files from previous examples/verification_support_settlement_frame.json</code></p>
+<p>The frame was placed in the global x-y plane with <code>z = 0</code>, so the mixed 3D solver could be used while preserving the original planar benchmark behavior. The imposed support motions were entered through the <code>prescribed_displacements</code> block in the JSON input file, which matches the final project requirement for prescribed support displacements.</p>
+<h4 id="5-code-results-4">5. Code results</h4>
+<p>The project run produced the following key nodal results.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>ux m</th>
+<th>uy m</th>
+<th>rz rad</th>
+<th>disp_mag m</th>
+<th>rot_mag rad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0.005938</td>
+<td>-0.000594</td>
+<td>0.021819</td>
+<td>0.005968</td>
+<td>0.021819</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.005000</td>
+<td>-0.010000</td>
+<td>0.021111</td>
+<td>0.011180</td>
+<td>0.021111</td>
+</tr>
+</tbody>
+</table>
+<p>The support reactions were</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Rx kN</th>
+<th>Ry kN</th>
+<th>Mz kN-m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>-128.793081</td>
+<td>56.348349</td>
+<td>238.717605</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-111.206919</td>
+<td>18.651651</td>
+<td>0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end-force results were</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Fx_i</th>
+<th>Fy_i</th>
+<th>Mz_i</th>
+<th>Fx_j</th>
+<th>Fy_j</th>
+<th>Mz_j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>56.348349</td>
+<td>128.793081</td>
+<td>238.717605</td>
+<td>-56.348349</td>
+<td>111.206919</td>
+<td>-150.786794</td>
+</tr>
+<tr>
+<td>2</td>
+<td>111.206919</td>
+<td>56.348349</td>
+<td>150.786794</td>
+<td>-111.206919</td>
+<td>18.651651</td>
+<td>0.000000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-comparison-between-benchmark-and-code-output-4">6. Comparison between benchmark and code output</h4>
+<p>The comparison shows essentially exact agreement between the code and the benchmark notebook values.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Benchmark</th>
+<th>Code</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 2 ux</td>
+<td>0.00593846</td>
+<td>0.005938</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 2 uy</td>
+<td>-0.00059439</td>
+<td>-0.000594</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 2 rz</td>
+<td>0.02181937</td>
+<td>0.021819</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 3 rz</td>
+<td>0.02111055</td>
+<td>0.021111</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 1 Rx</td>
+<td>-128.793081</td>
+<td>-128.793081</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 1 Ry</td>
+<td>56.348349</td>
+<td>56.348349</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 1 Mz</td>
+<td>238.717605</td>
+<td>238.717605</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 3 Rx</td>
+<td>-111.206919</td>
+<td>-111.206919</td>
+<td>about 0</td>
+</tr>
+<tr>
+<td>Node 3 Ry</td>
+<td>18.651651</td>
+<td>18.651651</td>
+<td>about 0</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end-force values also matched the benchmark pattern for both members, including the zero end moment at node 3 for element 2.</p>
+<h4 id="7-plot-4">7. Plot</h4>
+<p>Figure X shows the support-settlement verification case in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red. The deformed shape reflects both the imposed support motion and the mechanical loading.</p>
+<p><img src="../outputs/validation/simple_plots/verification_support_settlement_frame.png" alt="Figure X Support settlement verification showing undeformed and deformed geometry">
+<img src="../outputs/validation/plotly_plots/verification_support_settlement_frame.png" alt="Figure X Support settlement verification in plotly"></p>
+<h4 id="8-saved-outputs-4">8. Saved outputs</h4>
+<p>This run generated the standard saved output package for the model, including the nodal displacement table, support reaction table, element local end-force table, element global end-force table, derived element results table, summary files, and run log. The code writes these files to the organized run folder structure inside <code>outputs/runs/&lt;model_name&gt;/</code>.</p>
+<p>Typical saved files include</p>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>dof_summary.json</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_global_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+<li><code>run_log.txt</code></li>
+</ul>
+<h4 id="9-interpretation-statement-4">9. Interpretation statement</h4>
+<p>This case confirms that the project implementation of prescribed support displacement is working correctly. The nodal displacements, support reactions, and local element end forces all match the benchmark solution very closely. These results show that the code correctly incorporates imposed support motion into the partitioned direct stiffness solution and into the final element force recovery.</p>
+<h3 id="334-fabrication-error-verification">3.3.4 Fabrication error verification</h3>
+<h4 id="1-problem-description-5">1. Problem description</h4>
+<p>This verification case checks whether the code correctly handles fabrication or fit-up errors in frame members. The same small frame used in the earlier validation examples was analyzed, but both members were assumed to be fabricated 3 mm too short. The original mechanical member loads were kept, so the response includes both the mechanical effects and the additional fixed-end actions caused by the fabrication errors. This case is important because the final project requires the code to handle fabrication length errors through the right-hand side of the direct stiffness equations.</p>
+<h4 id="2-input-data-5">2. Input data</h4>
+<p>The model uses a consistent m-kN unit system. The frame geometry, supports, and mechanical loading are the same as the baseline frame case.</p>
+<p>Node coordinates</p>
+<ul>
+<li>node 1 <code>(0.0, 0.0, 0.0)</code></li>
+<li>node 2 <code>(0.0, 10.0, 0.0)</code></li>
+<li>node 3 <code>(8.0, 10.0, 0.0)</code></li>
+</ul>
+<p>Material and section properties</p>
+<ul>
+<li><code>E = 200000000.0 kN/m^2</code></li>
+<li><code>G = 76923076.92307693 kN/m^2</code></li>
+<li><code>A = 0.00474 m^2</code></li>
+<li><code>Iy = 2.22e-05 m^4</code></li>
+<li><code>Iz = 2.22e-05 m^4</code></li>
+<li><code>J = 2.22e-05 m^4</code></li>
+</ul>
+<p>Mechanical member loads</p>
+<ul>
+<li>element 1 <code>uniform_local_y = -24.0 kN/m</code></li>
+<li>element 2 <code>point_local_y_midspan = -75.0 kN</code></li>
+</ul>
+<p>Fabrication errors</p>
+<ul>
+<li>element 1 <code>deltaL = -0.003 m</code></li>
+<li>element 2 <code>deltaL = -0.003 m</code></li>
+</ul>
+<p>Supports</p>
+<ul>
+<li>node 1 fixed</li>
+<li>node 3 restrained in translation with free in-plane rotation</li>
+<li>out-of-plane DOFs restrained consistently with the 3D embedding</li>
+</ul>
+<h4 id="3-benchmark-solution-5">3. Benchmark solution</h4>
+<p>The benchmark values were taken from the verified A10 fabrication-error notebook solution.</p>
+<p>Benchmark displacements</p>
+<ul>
+<li>node 2 <code>ux = 0.00395391 m</code></li>
+<li>node 2 <code>uy = -0.00359855 m</code></li>
+<li>node 2 <code>rz = 0.02534020 rad</code></li>
+<li>node 3 <code>rz = 0.02178841 rad</code></li>
+</ul>
+<p>Benchmark reactions</p>
+<ul>
+<li>node 1 <code>Rx = -126.961294 kN</code></li>
+<li>node 1 <code>Ry = 56.742810 kN</code></li>
+<li>node 1 <code>Mz = 223.555420 kN-m</code></li>
+<li>node 3 <code>Rx = -113.038706 kN</code></li>
+<li>node 3 <code>Ry = 18.257190 kN</code></li>
+</ul>
+<p>Benchmark local element end forces</p>
+<p>Element 1</p>
+<ul>
+<li><code>N_i = 56.742810</code></li>
+<li><code>V_i = 126.961294</code></li>
+<li><code>M_i = 223.555420</code></li>
+<li><code>N_j = -56.742810</code></li>
+<li><code>V_j = 113.038706</code></li>
+<li><code>M_j = -153.942483</code></li>
+</ul>
+<p>Element 2</p>
+<ul>
+<li><code>N_i = 113.038706</code></li>
+<li><code>V_i = 56.742810</code></li>
+<li><code>M_i = 153.942483</code></li>
+<li><code>N_j = -113.038706</code></li>
+<li><code>V_j = 18.257190</code></li>
+<li><code>M_j = 0.000000</code></li>
+</ul>
+<h4 id="4-corresponding-computer-model-input-5">4. Corresponding computer model input</h4>
+<p>The case was recreated in the project as</p>
+<p><code>inputs/validation/Validation files from previous examples/verification_fabrication_error_frame.json</code></p>
+<p>The frame was placed in the global x-y plane with <code>z = 0</code>, so the mixed 3D solver could be used while preserving the original planar benchmark behavior. The fabrication errors were entered through the <code>fabrication_errors</code> block in the JSON input file, using <code>deltaL = -0.003</code> for both members.</p>
+<h4 id="5-code-results-5">5. Code results</h4>
+<p>The project run produced the following key nodal results.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">ux m</th>
+<th style="text-align:right">uy m</th>
+<th style="text-align:right">rz rad</th>
+<th style="text-align:right">disp_mag m</th>
+<th style="text-align:right">rot_mag rad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td style="text-align:right">0.003954</td>
+<td style="text-align:right">-0.003599</td>
+<td style="text-align:right">0.025340</td>
+<td style="text-align:right">0.005346</td>
+<td style="text-align:right">0.025340</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.021788</td>
+<td style="text-align:right">0.000000</td>
+<td style="text-align:right">0.021788</td>
+</tr>
+</tbody>
+</table>
+<p>The support reactions were</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">Rx kN</th>
+<th style="text-align:right">Ry kN</th>
+<th style="text-align:right">Mz kN-m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">-126.961294</td>
+<td style="text-align:right">56.742810</td>
+<td style="text-align:right">223.555420</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:right">-113.038706</td>
+<td style="text-align:right">18.257190</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end-force results were</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th style="text-align:right">Fx_i</th>
+<th style="text-align:right">Fy_i</th>
+<th style="text-align:right">Mz_i</th>
+<th style="text-align:right">Fx_j</th>
+<th style="text-align:right">Fy_j</th>
+<th style="text-align:right">Mz_j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">56.742810</td>
+<td style="text-align:right">126.961294</td>
+<td style="text-align:right">223.555420</td>
+<td style="text-align:right">-56.742810</td>
+<td style="text-align:right">113.038706</td>
+<td style="text-align:right">-153.942483</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">113.038706</td>
+<td style="text-align:right">56.742810</td>
+<td style="text-align:right">153.942483</td>
+<td style="text-align:right">-113.038706</td>
+<td style="text-align:right">18.257190</td>
+<td style="text-align:right">0.000000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-comparison-between-benchmark-and-code-output-5">6. Comparison between benchmark and code output</h4>
+<p>The comparison shows essentially exact agreement between the code and the benchmark.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Benchmark</th>
+<th style="text-align:right">Code</th>
+<th style="text-align:right">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 2 ux</td>
+<td style="text-align:right">0.00395391</td>
+<td style="text-align:right">0.003954</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 2 uy</td>
+<td style="text-align:right">-0.00359855</td>
+<td style="text-align:right">-0.003599</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 2 rz</td>
+<td style="text-align:right">0.02534020</td>
+<td style="text-align:right">0.025340</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 3 rz</td>
+<td style="text-align:right">0.02178841</td>
+<td style="text-align:right">0.021788</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 1 Rx</td>
+<td style="text-align:right">-126.961294</td>
+<td style="text-align:right">-126.961294</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 1 Ry</td>
+<td style="text-align:right">56.742810</td>
+<td style="text-align:right">56.742810</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 1 Mz</td>
+<td style="text-align:right">223.555420</td>
+<td style="text-align:right">223.555420</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 3 Rx</td>
+<td style="text-align:right">-113.038706</td>
+<td style="text-align:right">-113.038706</td>
+<td style="text-align:right">about 0</td>
+</tr>
+<tr>
+<td>Node 3 Ry</td>
+<td style="text-align:right">18.257190</td>
+<td style="text-align:right">18.257190</td>
+<td style="text-align:right">about 0</td>
+</tr>
+</tbody>
+</table>
+<p>The local element end-force values also match the benchmark pattern for both members, including the zero end moment at node 3 for element 2.</p>
+<h4 id="7-plot-5">7. Plot</h4>
+<p>Figure X shows the fabrication-error verification case in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red. The deformed shape reflects both the mechanical loading and the internal fit-up forces caused by the shortened members.</p>
+<p><img src="../outputs/validation/simple_plots/verification_fabrication_error_frame.png" alt="Figure X Fabrication error verification showing undeformed and deformed geometry"></p>
+<p><img src="../outputs/validation/plotly_plots/verification_fabrication_error_frame_valid.png" alt="Verification fabrication error frame"></p>
+<h4 id="8-saved-outputs-5">8. Saved outputs</h4>
+<p>This run generated the standard saved output package for the model, including the nodal displacement table, support reaction table, element local end-force table, element global end-force table, derived element results table, summary files, and run log.</p>
+<p>Typical saved files include</p>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>dof_summary.json</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_global_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+<li><code>run_log.txt</code></li>
+</ul>
+<h4 id="9-interpretation-statement-5">9. Interpretation statement</h4>
+<p>This case confirms that the project implementation of fabrication or fit-up error is working correctly. The nodal displacements, support reactions, and local element end forces all match the benchmark solution very closely. These results show that the code correctly incorporates fabrication length errors through the fixed-end-force formulation and recovers the correct structural response.</p>
+<h2 id="4-final-complex-structure-study">4. Final Complex Structure Study</h2>
+<h3 id="41-introduction-to-the-fort-griffin-bridge">4.1 Introduction to the Fort Griffin Bridge</h3>
+<p>The final complex structure study focuses on the main span of the Fort Griffin Iron Truss Bridge in Shackelford County, Texas. The bridge was originally constructed in 1885 by the King Iron and Bridge Manufacturing Company. It is historically important because it is one of the oldest surviving truss bridges in Texas and the last remaining pin connected Pratt through truss in Shackelford County.</p>
+<p>The bridge is well suited to this project because the main span can be idealized as a mixed structural system. The side trusses primarily carry axial force and are therefore represented with 3D truss elements, while the transverse floor beams and longitudinal stringers introduce bending behavior and are represented with 3D frame elements. The Fort Griffin bridge therefore provides a strong final application for a mixed 3D truss and frame solver rather than a purely truss based analysis.</p>
+<p>Only the main span is modeled in this project. This is a deliberate scope decision. The main span already captures the most important mixed behavior needed for the final project, while excluding the approach spans avoids additional uncertainty related to bent behavior, connection idealization, and support assumptions.</p>
+<p>![Barrel view from east](report/Case study/images/BARREL VIEW FROM E. - Fort Griffin Iron Truss Bridge, Spanning Clear Fork of Brazos River at County Route 188, Fort Griffin, Shackelford County, TX.png)
+<img src="Case study/images/BARREL VIEW FROM E. - Fort Griffin Iron Truss Bridge, Spanning Clear Fork of Brazos River at County Route 188, Fort Griffin, Shackelford County, TX.png" alt="Barrel view from east"></p>
+<p><em>Figure 4.1. Barrel view from east of the Fort Griffin Iron Truss Bridge.</em></p>
+<p><img src="Case study/images/ELEVATION FROM S. - Fort Griffin Iron Truss Bridge, Spanning Clear Fork of Brazos River at County Route 188, Fort Griffin, Shackelford County, TX.png" alt="Elevation from south"></p>
+<p><em>Figure 4.2. Elevation from south of the Fort Griffin Iron Truss Bridge.</em></p>
+<p><img src="Case study/images/UNDERSIDE OF MAIN SPAN, FROM E. - Fort Griffin Iron Truss Bridge, Spanning Clear Fork of Brazos River at County Route 188, Fort Griffin, Shackelford County, TX.png" alt="Underside of main span from east"></p>
+<p><em>Figure 4.3. Underside of the main span from east of the Fort Griffin Iron Truss Bridge.</em></p>
+<h3 id="42-background-research-and-literature-review">4.2 Background Research and Literature Review</h3>
+<p>The main source for the bridge study is the case study report on the evaluation and rehabilitation of the historic metal truss bridge in Shackelford County, Texas. That study includes data collection, material evaluation, structural analysis and load rating, field load testing, and rehabilitation options. It also provides bridge history, floor system details, truss geometry, support information, photographs, and drawings.</p>
+<p>The case study and the preliminary plan describe the bridge as a wrought iron pin connected Pratt through truss. The main span is about 109 to 110 ft long, the overall width is about 20 ft, the clear roadway width is about 13 ft 6 in, and the truss height is about 18 ft. These dimensions establish the overall scale and proportions of the structural system used for the analytical model.</p>
+<p>The literature also provides useful information about the member types and the floor system. The bottom chord is formed from eyebars, the top chord is a built up compression member, the bridge has vertical and diagonal truss members, and the floor system consists of timber deck planks supported by longitudinal timber stringers and transverse metal floor beams. The bridge also includes lateral bracing systems, which confirms that the real structure is more complex than the simplified analytical model used in this project.</p>
+<p>The available case-study documentation makes this bridge feasible for a final modeling study. The report provides more than photographs. It includes floor system details, truss geometry, support descriptions, member property tables, analysis discussion, field test information, and appendices with drawings. This allows the bridge to be modeled in a rational way while still acknowledging the need for simplifying assumptions.</p>
+<h3 id="43-structural-configuration-and-load-path">4.3 Structural Configuration and Load Path</h3>
+<p>The structural system of the main span consists of two side trusses connected by transverse floor beams and supporting longitudinal timber stringers. The timber deck planks rest on the stringers, and the stringers rest on the floor beams. The floor beams then transfer load into the two side trusses.</p>
+<p>The primary main-span load carrying elements are the two side trusses. Because the bridge is a Pratt through truss, vertical gravity load is expected to move from the deck system into the lower chord joints and then redistribute through the verticals, diagonals, top chord, and bottom chord according to the truss geometry.</p>
+<p>In the mixed analytical idealization used here, the floor system acts as the first load receiving subsystem, while the two side truss planes act as the main span carrying subsystem. This is the basic load path that the revised bridge model is intended to capture.</p>
+<h3 id="44-modeling-assumptions-and-idealization">4.4 Modeling Assumptions and Idealization</h3>
+<p>The Fort Griffin bridge was translated into an analytical model as a rational first idealization rather than a full historical reconstruction. The model includes only the main span because that part already captures the mixed behavior required for the project through the interaction of the two side trusses, the transverse floor beams, the longitudinal stringers, and the added top lateral bracing system. The approach spans, railings, and many secondary details were omitted so that the study could stay focused on the main mixed truss and frame system.</p>
+<h4 id="441-overall-idealization">4.4.1 Overall idealization</h4>
+<p>The bridge was modeled as two parallel side truss planes connected by a floor system. In the revised baseline bridge model, the left truss plane is placed at <code>y = 0.0 ft</code> and the right truss plane is placed at <code>y = 20.0 ft</code>. The current revised baseline contains 39 nodes. The element layout includes side-truss members, floor beams, stringers, and a first-pass top lateral bracing system.</p>
+<h4 id="442-where-truss-elements-were-used">4.4.2 Where truss elements were used</h4>
+<p>The main side trusses were modeled primarily with 3D truss elements. This includes the lower chord, upper chord, vertical members, diagonal members, end members, and tension rod type members in the two side truss planes. A first-pass top lateral bracing system was also added using 3D truss elements between the top nodes of the two side trusses.</p>
+<h4 id="443-where-frame-elements-were-used">4.4.3 Where frame elements were used</h4>
+<p>The floor system was modeled with 3D frame elements. The transverse floor beams were represented as frame members connecting the two side trusses at the panel locations, and the longitudinal stringers were also represented as frame members so that bending stiffness could be included in the deck support system.</p>
+<h4 id="444-geometric-simplifications">4.4.4 Geometric simplifications</h4>
+<p>The real bridge floor system contains more longitudinal stringers than the analytical model. The current analytical model simplifies the floor system to three longitudinal stringer lines. The two outer modeled stringer lines represent the stronger stringer regions, while the center modeled stringer line represents the lighter central stringer region.</p>
+<p>The deck planks and thin steel floor plates were not modeled explicitly. Their effect was represented through simplified distributed loads applied to the modeled stringer lines.</p>
+<h4 id="445-material-and-section-assumptions">4.4.5 Material and section assumptions</h4>
+<p>The current baseline model uses a single wrought iron material for the bridge members, with <code>E = 4,176,000 kip/ft^2</code>, <code>G = 1,612,800 kip/ft^2</code>, and <code>alpha = 6.5 × 10^-6 /°F</code>.</p>
+<p>Several section properties remain first-pass engineering assumptions rather than exact historical reconstructions. The truss member families currently use simplified axial areas, while the floor-beam and stringer members use assumed frame properties intended to provide a rational first approximation of stiffness. The two outer modeled stringer lines were assigned the heavier stringer section, and the center modeled stringer line was assigned the lighter section.</p>
+<h4 id="446-support-and-boundary-assumptions">4.4.6 Support and boundary assumptions</h4>
+<p>The support conditions in the analytical model are simplified compared with the real bridge. The baseline retains the same overall support philosophy used in the earlier bridge model. One span end restrains longitudinal movement while the opposite end allows longitudinal movement along the bridge length. Additional lateral and rotational restraints remain at many truss-plane nodes as stabilizing assumptions within the simplified three dimensional idealization.</p>
+<p>The support system should therefore be understood as a mixed physical and numerical idealization. The longitudinal support behavior follows the intended hinge and roller concept at a basic level, while the broader lateral and rotational restraints provide stability in the current simplified model.</p>
+<h3 id="45-baseline-model-input-file">4.5 Baseline Model Input File</h3>
+<p>The  baseline model used for the final structure study is stored in the JSON file <code>fort_griffin_main_span_revised_baseline.json</code>. This file defines the bridge geometry, material properties, section properties, element types, support conditions, and applied loads in a single structured input file.</p>
+<h3 id="46-initial-baseline-setup">4.6 Initial Baseline Setup</h3>
+<h4 id="461-baseline-loading">4.6.1 Baseline Loading</h4>
+<p>The  baseline uses redistributed dead-load type member loads on the three modeled stringer lines. The two outer stringer lines carry larger uniform loads, while the center stringer line carries a smaller uniform load. This loading pattern was chosen to represent the documented deck and stringer dead load in a simplified but more realistic way than the earlier placeholder loading.</p>
+<p>In the current  baseline, the member loads are</p>
+<ul>
+<li>outer left stringer line, <code>w = -0.159 kip/ft</code></li>
+<li>center stringer line, <code>w = -0.039 kip/ft</code></li>
+<li>outer right stringer line, <code>w = -0.159 kip/ft</code></li>
+</ul>
+<p>The current  baseline does not yet include separate nodal self-weight loads for the truss members or separate floor-beam self-weight loads. Those loads can be added in a later refinement if needed.</p>
+<h4 id="462-revised-baseline-geometry-and-element-layout">4.6.2 Revised Baseline Geometry and Element Layout</h4>
+<p>The bridge model contains the two main side truss planes at the outer edges of the bridge width, with intermediate floor-system nodes placed between them. The floor beams connect the lower truss joints across the width, and the stringers run longitudinally between successive floor beams. The top truss nodes are now connected across the bridge width through the added top lateral bracing members.</p>
+<p>The  baseline model should therefore be interpreted as a mixed 3D truss and 3D frame idealization with the following main subsystems</p>
+<ul>
+<li>side trusses modeled as truss members</li>
+<li>floor beams modeled as frame members</li>
+<li>stringers modeled as frame members</li>
+<li>top lateral bracing modeled as truss members</li>
+</ul>
+<h4 id="463--baseline-plots">4.6.3  Baseline Plots</h4>
+<h5 id="4631-undeformed-baseline-model">4.6.3.1 Undeformed Baseline Model</h5>
+<p><img src="Case study/images/Case study 3D bridge model.png" alt="Case study 3D bridge model"></p>
+<p><em>Figure. Case study 3D bridge model.</em></p>
+<p><img src="Case study/images/Case study 2D truss model.png" alt="Case study 2D truss model"></p>
+<p><em>Figure. Case study 2D truss model.</em>
+<img src="../outputs/final_bridge/simple_plots/fort_griffin_revised_baseline_undeformed.png" alt="Fort Griffin revised baseline undeformed"></p>
+<h5 id="4632-undeformed-and-deformed-revised-baseline-model">4.6.3.2 Undeformed and Deformed Revised Baseline Model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/fort_griffin_revised_baseline_undeformed_plus_deformed.png" alt="Fort Griffin revised baseline undeformed and deformed"></p>
+<h5 id="4633-interactive-plotly-views">4.6.3.3 Interactive Plotly Views</h5>
+<ul>
+<li><a href="../outputs/final_bridge/plotly_plots/fort_griffin_revised_baseline_undeformed.html">Undeformed interactive Plotly model</a></li>
+<li><a href="../outputs/final_bridge/plotly_plots/fort_griffin_revised_baseline_undeformed_plus_deformed.html">Undeformed and deformed interactive Plotly model</a></li>
+</ul>
+<h4 id="464--baseline-run-notes">4.6.4  Baseline Run Notes</h4>
+<p>The  baseline run completed successfully and produced a stable structural response. The largest displacements occurred in the central region of the floor system, which is consistent with the location of the applied stringer loads and the expected transfer of gravity load from the floor system into the side trusses. The governing frame responses were concentrated in the central floor-beam region, which is also consistent with the expected bridge load path.</p>
+<p>The  baseline model now includes two important refinements compared with the earlier bridge baseline. The first refinement is the  stringer layout and redistributed dead-load pattern. The second refinement is the addition of the top lateral bracing system. These changes give the bridge model a more realistic three dimensional load path than the earlier version.</p>
+<h4 id="465-current-baseline-limitations">4.6.5 Current Baseline Limitations</h4>
+<p>The baseline is still a first-pass bridge model. The support assumptions remain simplified, the truss and frame properties are still partly assumed, the deck is not modeled explicitly, bottom lateral bracing has not yet been added, and explicit self-weight for all members has not yet been introduced separately. These limitations will be important when interpreting both the baseline response and the scenario-study results.</p>
+<h4 id="466-planned-scenario-studies">4.6.6 Planned Scenario Studies</h4>
+<p>The bridge study will compare the baseline against selected altered cases. The two main scenario studies chosen for the final report are</p>
+<ul>
+<li>missing diagonal</li>
+<li>weakened floor beam</li>
+</ul>
+<p>A third case, weakened center stringer, may be used as a shorter sensitivity check if needed. These altered cases will be discussed after the baseline model is fully locked.</p>
+<h3 id="47-baseline-setup-with-added-dead-loads">4.7 Baseline Setup with Added Dead Loads</h3>
+<h4 id="471-baseline-loading">4.7.1 Baseline Loading</h4>
+<p>The baseline bridge model was upgraded from the earlier revised baseline so that gravity loading is represented more clearly in the analytical model. In this version, the floor system carries the primary distributed deck related load through the modeled stringer lines, and additional dead load is introduced to represent the weight of the structural members themselves. The purpose of this baseline is to establish a realistic gravity dominated reference state before the bridge is subjected to altered damage or sensitivity scenarios.</p>
+<p>The loading idealization follows the simplified mixed bridge model used in this project.</p>
+<ul>
+<li>redistributed dead load is applied along the modeled stringer lines</li>
+<li>floor-beam self-weight is represented with uniform member loading on the floor beams</li>
+<li>truss self-weight is represented with fixed downward nodal loads at the truss joints</li>
+</ul>
+<p>This approach is still a first-pass engineering idealization, but it is more complete than the earlier baseline that used only a limited deck-type load on selected stringer segments. It allows the model to represent gravity loading in both the frame dominated floor system and the truss dominated main span.</p>
+<h4 id="472-baseline-model-file-and-structural-idealization">4.7.2 Baseline Model File and Structural Idealization</h4>
+<p>The baseline discussed in this section corresponds to the Fort Griffin main-span input file that includes the updated dead-load package and the first-pass top lateral bracing system. The bridge is modeled as a mixed three dimensional system composed of</p>
+<ul>
+<li>two side truss planes</li>
+<li>transverse floor beams</li>
+<li>three longitudinal stringer lines</li>
+<li>top lateral bracing between the two side trusses</li>
+</ul>
+<p>The side trusses and top lateral bracing are modeled with 3D truss elements. The floor beams and stringers are modeled with 3D frame elements. This mixed idealization is central to the final project because the bridge does not behave as a pure truss. The floor system receives and distributes gravity load through bending, while the side trusses provide the main span carrying action through axial force transfer.</p>
+<p>In the revised floor-system idealization, the two outer stringer lines are assigned the heavier section and the center stringer line is assigned the lighter section. This gives the simplified three-stringer model a closer relationship to the real bridge floor system than the earlier baseline version.</p>
+<h4 id="473-baseline-figures">4.7.3 Baseline Figures</h4>
+<h5 id="4731-undeformed-baseline-model">4.7.3.1 Undeformed baseline model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/fort_griffin_revised_deadload_undeformed.png" alt="Fort Griffin revised dead-load baseline undeformed"></p>
+<h5 id="4732-undeformed-and-deformed-baseline-model">4.7.3.2 Undeformed and deformed baseline model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/fort_griffin_revised_deadload_undeformed_plus_deformed.png" alt="Fort Griffin revised dead-load baseline undeformed and deformed"></p>
+<h5 id="4733-plotly-undeformed-view">4.7.3.3 Plotly undeformed view</h5>
+<p><img src="../outputs/final_bridge/plotly_plots/fort_griffin_revised_deadload_undeformed.png" alt="Fort Griffin revised dead-load baseline Plotly undeformed"></p>
+<h5 id="4734-plotly-undeformed-and-deformed-view">4.7.3.4 Plotly undeformed and deformed view</h5>
+<p><img src="../outputs/final_bridge/plotly_plots/fort_griffin_revised_deadload_undeformed_plus_deformed.png" alt="Fort Griffin revised dead-load baseline Plotly undeformed and deformed"></p>
+<h5 id="4735-interactive-plotly-files">4.7.3.5 Interactive Plotly files</h5>
+<ul>
+<li><a href="../outputs/final_bridge/plotly_plots/fort_griffin_revised_deadload_undeformed.html">Undeformed interactive Plotly model</a></li>
+<li><a href="../outputs/final_bridge/plotly_plots/fort_griffin_revised_deadload_undeformed_plus_deformed.html">Undeformed and deformed interactive Plotly model</a></li>
+</ul>
+<h4 id="474-baseline-response-and-deformed-shape">4.7.4 Baseline Response and Deformed Shape</h4>
+<p>The dead-load baseline ran successfully and produced a stable response. The model contains 39 nodes and 91 elements, including both truss and frame members. The maximum displacement magnitude is approximately <code>0.000583 ft</code>, which is about <code>0.007 in</code>. For a bridge with a main span of about 109 ft, this is a very small absolute deformation under a gravity-type baseline load case and is not immediately suggestive of unrealistic softness or numerical instability.</p>
+<p>The largest displacement occurs at node 32, near the middle region of the floor system. Nearby floor nodes such as 31, 33, 29, and 35 also show the next largest displacements. The lower chord joints of the side trusses in the same span region move downward as well, but the floor-system nodes show the larger local response. This pattern is physically reasonable. The deck-support system receives the load first, so the floor beams and stringers develop the largest local vertical sag before the load is redistributed into the side trusses.</p>
+<p>The deformed-shape figure is especially useful here. Even with amplified plotting, the bridge remains geometrically coherent and does not show disconnected pieces, wild twisting, or unrealistic lateral sway. The red deformed geometry tracks the original structural layout clearly, with the most visible sag concentrated in the central floor-system region. The upper truss profile, lower truss profile, and top lateral bracing all remain connected and deform together as one structural system.</p>
+<p>The vertical response clearly dominates the baseline deformation. The main movement is downward in the floor system, while transverse drift remains negligible in comparison. This is consistent with the type of load applied and also indicates that the first-pass top lateral bracing together with the current support assumptions are sufficient to prevent spurious lateral movement in the present gravity baseline.</p>
+<h4 id="475-interpretation-of-mixed-truss-and-frame-behavior">4.7.5 Interpretation of Mixed Truss and Frame Behavior</h4>
+<p>The baseline response shows why this bridge should not be modeled as a pure truss if the goal is to understand the actual load path. The floor beams and stringers behave as frame members, so they develop local bending response and control the short-range sag pattern at the deck level. The side trusses behave primarily as axial-force systems, so they control the larger span-level redistribution of load and provide the main resistance across the full bridge length.</p>
+<p>This dual structural character is visible in the response pattern.</p>
+<ul>
+<li>the largest local displacements occur in the floor-system region</li>
+<li>the side trusses do not sag independently of the floor system</li>
+<li>the bridge responds as a connected mixed system rather than as two isolated trusses with a decorative deck</li>
+</ul>
+<p>The deformed shape therefore supports the basic engineering interpretation that the floor system acts as the first load-receiving subsystem and the two side trusses act as the main span-carrying subsystem. This is one of the most important observations in the final bridge study because it justifies the use of a mixed truss and frame solver for the Fort Griffin bridge.</p>
+<h4 id="476-baseline-scale-of-deformation-and-support-response">4.7.6 Baseline Scale of Deformation and Support Response</h4>
+<p>The scale of the computed deformation remains small relative to the bridge size. Even the maximum displacement is only a small fraction of an inch. That result is appropriate for a baseline gravity case and supports the view that the bridge model is globally stiff enough to behave plausibly under service-type loading.</p>
+<p>The end reactions also remain broadly balanced. The four lower support regions share the vertical reaction in a way that is consistent with a bridge carrying gravity load through both truss planes and the connected floor system. The reaction pattern is not perfectly uniform, but it is close enough to indicate that the model is behaving as a bridge-wide structural system rather than forcing the response into one side only.</p>
+<h4 id="477-engineering-meaning-of-the-baseline">4.7.7 Engineering Meaning of the Baseline</h4>
+<p>The dead-load baseline gives a useful starting point for all later bridge scenarios. It establishes</p>
+<ul>
+<li>the basic gravity-load path</li>
+<li>the relative importance of the floor system in local deck-level deformation</li>
+<li>the role of the side trusses in span-level load redistribution</li>
+<li>the influence of the added top lateral bracing on three dimensional stability</li>
+</ul>
+<p>Because the baseline now contains both redistributed deck-related dead load and explicit self-weight surrogates for the structural members, it is a stronger reference model than the earlier simplified baseline. It also gives a more defensible basis for later scenario comparisons, since any changes in displacement or force can be judged against a bridge state that already includes the main gravity effects.</p>
+<h4 id="478-current-baseline-limitations">4.7.8 Current Baseline Limitations</h4>
+<p>The baseline is still a first-pass analytical model, not a full historical reconstruction. Several simplifications remain.</p>
+<ul>
+<li>support conditions are still partly idealized for stability</li>
+<li>member properties are still partly assumed</li>
+<li>the timber deck is represented through equivalent loading rather than explicit deck elements</li>
+<li>bottom lateral bracing is not yet included</li>
+<li>connection behavior is simplified</li>
+</ul>
+<p>These limitations do not make the model unusable. They define the boundaries within which the baseline should be interpreted. The present baseline is best treated as a rational structural reference model for comparing scenario behavior, not as a final load-rating model of the historic bridge.</p>
+<h4 id="479-transition-to-scenario-studies">4.7.9 Transition to Scenario Studies</h4>
+<p>With the added dead-load package and top lateral bracing now included, the baseline model is sufficiently developed to serve as the reference case for the scenario studies. The next stage of the bridge study will compare this baseline against selected altered cases, especially the missing diagonal scenario and the weakened floor-beam scenario, to examine how local damage or stiffness reduction changes the overall bridge response.</p>
+<h3 id="48-extreme-missing-diagonals-overload-scenario">4.8 Extreme Missing-Diagonals Overload Scenario</h3>
+<h4 id="481-scenario-purpose-and-setup">4.8.1 Scenario Purpose and Setup</h4>
+<p>This scenario was developed as an intentionally severe bridge response case rather than a mild damage case. The purpose was to create a clearly visible and mechanically meaningful change from the baseline so that the mixed truss and frame solver could be evaluated under a much more demanding structural condition.</p>
+<p>The scenario starts from the revised dead-load baseline model and then changes only the bridge configuration and loading associated with the altered condition. The baseline assumptions regarding geometry, member types, material, support conditions, floor-system idealization, top lateral bracing, and dead-load representation are kept unchanged unless specifically modified in this scenario.</p>
+<p>Two major changes were introduced.</p>
+<ol>
+<li>
+<p>Several important diagonal members near the central span region were removed from the side trusses. In the present model, elements <code>119</code>, <code>120</code>, <code>219</code>, and <code>220</code> were deleted.</p>
+</li>
+<li>
+<p>A severe additional downward overload was applied in the central floor region. This overload was represented by concentrated nodal loads of <code>Fz = -2.0 kip</code> at nodes <code>31</code>, <code>32</code>, <code>33</code>, <code>34</code>, <code>35</code>, and <code>36</code>.</p>
+</li>
+</ol>
+<p>This scenario should therefore be interpreted as an extreme combined damage and overload condition. It is not intended to represent a normal operating state of the bridge. Its value in the project is that it reveals how the bridge load path changes when several important truss members are inactive and the floor system is forced to carry much larger local demand.</p>
+<h4 id="482-scenario-figures">4.8.2 Scenario Figures</h4>
+<h5 id="4821-undeformed-extreme-scenario-model">4.8.2.1 Undeformed extreme scenario model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/scenario_extreme_missing_diagonals_overload_undeformed.png" alt="Extreme missing diagonals overload scenario undeformed"></p>
+<h5 id="4822-undeformed-and-deformed-extreme-scenario-model">4.8.2.2 Undeformed and deformed extreme scenario model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed.png" alt="Extreme missing diagonals overload scenario undeformed and deformed"></p>
+<h5 id="4823-plotly-undeformed-view">4.8.2.3 Plotly undeformed view</h5>
+<p><img src="../outputs/final_bridge/plotly_plots/scenario_extreme_missing_diagonals_overload_undeformed.png" alt="Extreme missing diagonals overload scenario Plotly undeformed"></p>
+<h5 id="4824-plotly-undeformed-and-deformed-view">4.8.2.4 Plotly undeformed and deformed view</h5>
+<p><img src="../outputs/final_bridge/plotly_plots/scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed_2.png" alt="Scenario extreme missing diagonals overload undeformed and deformed"></p>
+<p><em>Figure. Extreme missing diagonals overload case, undeformed and deformed view.</em></p>
+<p><img src="../outputs/final_bridge/plotly_plots/scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed_3.png" alt="Scenario extreme missing diagonals overload undeformed and deformed"></p>
+<p><em>Figure. Extreme missing diagonals overload case, showing relative displacement.</em></p>
+<h5 id="4825-interactive-plotly-files">4.8.2.5 Interactive Plotly files</h5>
+<ul>
+<li><a href="../outputs/final_bridge/plotly_plots/scenario_extreme_missing_diagonals_overload_undeformed.html">Undeformed interactive Plotly model</a></li>
+<li><a href="../outputs/final_bridge/plotly_plots/scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed.html">Undeformed and deformed interactive Plotly model</a></li>
+</ul>
+<h4 id="483-visual-interpretation-of-the-deformed-shape">4.8.3 Visual Interpretation of the Deformed Shape</h4>
+<p>The deformed shape shows a much stronger response than the baseline. The greatest sag is concentrated in the central floor-system region, and the lower chord lines in both truss planes are pulled downward more strongly than in the baseline. The bridge still behaves as a connected structure, but the deformation pattern is much more pronounced and no longer resembles the mild service-type sag of the baseline case.</p>
+<p>The figure is especially useful because it makes the mixed structural behavior very clear. The floor system still acts as the first load receiving subsystem, but the local sag becomes much larger and spreads more strongly into the side trusses. At the same time, the removed diagonals reduce the ability of the side trusses to follow the original force path. The result is a bridge response that is still stable in the numerical model but much more strained and visibly distorted.</p>
+<h4 id="484-comparison-with-the-revised-dead-load-baseline">4.8.4 Comparison with the Revised Dead-Load Baseline</h4>
+<p>The most important comparison values are summarized below.</p>
+<table>
+<thead>
+<tr>
+<th>Response quantity</th>
+<th style="text-align:right">Revised dead-load baseline</th>
+<th style="text-align:right">Extreme scenario</th>
+<th style="text-align:right">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum displacement magnitude</td>
+<td style="text-align:right">0.000583 ft</td>
+<td style="text-align:right">0.000969 ft</td>
+<td style="text-align:right">+66.3%</td>
+</tr>
+<tr>
+<td>Node of maximum displacement</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">32</td>
+<td style="text-align:right">same location</td>
+</tr>
+<tr>
+<td>Total vertical reaction at nodes 1, 7, 13, 19</td>
+<td style="text-align:right">29.16 kip</td>
+<td style="text-align:right">41.16 kip</td>
+<td style="text-align:right">+41.2%</td>
+</tr>
+<tr>
+<td>Peak truss axial force</td>
+<td style="text-align:right">10.54 kip</td>
+<td style="text-align:right">17.32 kip</td>
+<td style="text-align:right">+64.3%</td>
+</tr>
+<tr>
+<td>Peak frame end moment</td>
+<td style="text-align:right">5.08 kip-ft</td>
+<td style="text-align:right">13.39 kip-ft</td>
+<td style="text-align:right">+163.7%</td>
+</tr>
+</tbody>
+</table>
+<p>The maximum displacement remains at node <code>32</code>, which is still in the central floor-system region, but its magnitude increases sharply from about <code>0.000583 ft</code> to <code>0.000969 ft</code>. This is about a <code>66.3%</code> increase. The neighboring floor nodes also show very large increases. Node <code>31</code> rises from about <code>0.000544 ft</code> to <code>0.000888 ft</code>, about <code>63.2%</code>, and node <code>33</code> rises from about <code>0.000546 ft</code> to <code>0.000890 ft</code>, about <code>63.1%</code>.</p>
+<p>The nearby lower chord joints also experience substantial growth in displacement. Node <code>4</code> increases from about <code>0.000488 ft</code> to <code>0.000778 ft</code>, about <code>59.5%</code>, and node <code>16</code> increases from about <code>0.000490 ft</code> to <code>0.000780 ft</code>, about <code>59.2%</code>. This shows that the floor-system overload is not remaining only in the stringers and floor beams. It is being transmitted into the main truss system in a much stronger way than in the baseline.</p>
+<h4 id="485-support-reaction-changes">4.8.5 Support-Reaction Changes</h4>
+<p>The vertical reactions at the four principal lower support points all increase significantly.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th style="text-align:right">Baseline <code>Rz</code> kip</th>
+<th style="text-align:right">Extreme scenario <code>Rz</code> kip</th>
+<th style="text-align:right">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:right">6.905</td>
+<td style="text-align:right">9.405</td>
+<td style="text-align:right">+36.2%</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:right">7.617</td>
+<td style="text-align:right">11.117</td>
+<td style="text-align:right">+46.0%</td>
+</tr>
+<tr>
+<td>13</td>
+<td style="text-align:right">6.972</td>
+<td style="text-align:right">9.472</td>
+<td style="text-align:right">+35.9%</td>
+</tr>
+<tr>
+<td>19</td>
+<td style="text-align:right">7.661</td>
+<td style="text-align:right">11.160</td>
+<td style="text-align:right">+45.7%</td>
+</tr>
+</tbody>
+</table>
+<p>The support pattern remains broadly balanced between the two sides of the bridge, but the absolute reaction levels increase substantially. This indicates that the bridge is still redistributing load across the full span rather than collapsing into a one-sided mechanism, even under this severe case.</p>
+<h4 id="486-truss-and-frame-demand-changes">4.8.6 Truss and Frame Demand Changes</h4>
+<p>The truss-force pattern changes strongly in this scenario. In the revised dead-load baseline, the largest truss axial-force demand was about <code>10.54 kip</code>. In the extreme scenario, the largest truss axial-force demand rises to about <code>17.32 kip</code>, which is about a <code>64.3%</code> increase.</p>
+<p>The most critical truss members also shift toward the central lower chord and upper-end regions. In the extreme scenario, the largest truss axial-force magnitudes occur in members such as <code>203</code>, <code>204</code>, <code>103</code>, and <code>104</code>, which reach values around <code>17.25 kip</code> to <code>17.32 kip</code>. In the baseline, the largest values were only around <code>10.37 kip</code> to <code>10.54 kip</code>. This is a strong indication of major force-path redistribution in the truss system.</p>
+<p>The frame demand increases even more dramatically. In the revised dead-load baseline, the largest frame end moment was about <code>5.08 kip-ft</code>. In the extreme scenario, the largest frame end moment rises to about <code>13.39 kip-ft</code>, which is about a <code>163.7%</code> increase. The most critical frame members shift into the overloaded central floor-beam region, especially elements <code>305</code>, <code>308</code>, <code>306</code>, and <code>307</code>. This is fully consistent with the scenario definition, since the additional overload was applied directly in that floor-system region.</p>
+<h4 id="487-engineering-interpretation">4.8.7 Engineering Interpretation</h4>
+<p>This scenario produces a much stronger response than the baseline because it combines two different ways of degrading the bridge behavior at the same time. Removing the diagonals weakens the original truss load path, while the added central overload forces the floor system and the remaining truss members to carry much more demand.</p>
+<p>The results show that the bridge response is no longer controlled only by mild gravity sag in the floor system. The missing diagonals cause the truss system to lose part of its preferred axial-force path, and the overload then pushes larger deformation and force demand into the surrounding members. The frame subsystem becomes much more highly stressed, and the truss subsystem also shows a major increase in axial-force demand.</p>
+<p>This case therefore demonstrates one of the main goals of the final project. The mixed solver is not just producing output tables. It is showing how the structural behavior changes when the bridge is forced into a drastically altered state. The results make clear that severe local damage combined with severe overload can amplify both local frame response and global truss response at the same time.</p>
+<h4 id="489-scenario-limits">4.8.9 Scenario Limits</h4>
+<p>This scenario should be interpreted as an intentionally severe sensitivity study rather than a calibrated historical damage case. The removed diagonals and added overload were selected to create a drastic but still solvable response so that the mixed bridge model could be pushed into a clearly altered structural state. The scenario is therefore valuable for understanding structural sensitivity and load-path redistribution, but it should not be mistaken for a literal prediction of how the real bridge would fail under field conditions.</p>
+<h3 id="49-weakened-floor-beam-scenario">4.9 Weakened Floor Beam Scenario</h3>
+<h4 id="491-scenario-purpose-and-setup">4.9.1 Scenario Purpose and Setup</h4>
+<p>This scenario investigates a local floor-system weakness case rather than a global truss-damage case. The purpose is to examine how the bridge response changes when one important transverse floor-beam line loses stiffness while the rest of the bridge remains intact.</p>
+<p>The scenario starts from the revised dead-load baseline model. The baseline assumptions regarding geometry, supports, truss layout, top lateral bracing, stringer layout, and dead-load representation are kept unchanged. Only one local change is introduced.</p>
+<p>The central floor-beam line was weakened by assigning a reduced-stiffness section to elements <code>309</code>, <code>310</code>, <code>311</code>, and <code>312</code>. These members form the floor-beam line through nodes <code>4-31-32-33-16</code>, which lies in the central region of the bridge where the baseline gravity response is already most active.</p>
+<p>This scenario is intended to represent deterioration, section loss, or serious stiffness reduction in one transverse floor-beam assembly. Unlike the extreme missing-diagonals overload scenario, this case isolates local floor-system weakening without introducing extra overload or removing major truss members.</p>
+<h4 id="492-scenario-figures">4.9.2 Scenario Figures</h4>
+<h5 id="4921-undeformed-weakened-floor-beam-model">4.9.2.1 Undeformed weakened floor-beam model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/scenario_weakened_floor_beam_from_deadload_undeformed.png" alt="Weakened floor beam scenario undeformed"></p>
+<h5 id="4922-undeformed-and-deformed-weakened-floor-beam-model">4.9.2.2 Undeformed and deformed weakened floor-beam model</h5>
+<p><img src="../outputs/final_bridge/simple_plots/scenario_weakened_floor_beam_from_deadload_undeformed_plus_deformed.png" alt="Weakened floor beam scenario undeformed and deformed"></p>
+<h5 id="4923-plotly-undeformed-view">4.9.2.3 Plotly undeformed view</h5>
+<p><img src="../outputs/final_bridge/plotly_plots/scenario_weakened_floor_beam_from_deadload_undeformed.png" alt="Weakened floor beam scenario Plotly undeformed"></p>
+<h5 id="4924-plotly-undeformed-and-deformed-view">4.9.2.4 Plotly undeformed and deformed view</h5>
+<p><img src="../outputs/final_bridge/plotly_plots/scenario_weakened_floor_beam_from_deadload_undeformed_plus_deformed.png" alt="Weakened floor beam scenario Plotly undeformed and deformed"></p>
+<h5 id="4925-interactive-plotly-files">4.9.2.5 Interactive Plotly files</h5>
+<ul>
+<li><a href="../outputs/final_bridge/plotly_plots/scenario_weakened_floor_beam_from_deadload_undeformed.html">Undeformed interactive Plotly model</a></li>
+<li><a href="../outputs/final_bridge/plotly_plots/scenario_weakened_floor_beam_from_deadload_undeformed_plus_deformed.html">Undeformed and deformed interactive Plotly model</a></li>
+</ul>
+<h4 id="493-visual-interpretation-of-the-deformed-shape">4.9.3 Visual Interpretation of the Deformed Shape</h4>
+<p>The weakened-floor-beam response is clearly different in character from the extreme missing-diagonals overload case. The bridge remains globally coherent, and the deformation is still dominated by vertical sag rather than broad bridge-wide distortion. The largest visible change is concentrated in the central floor-system region, especially along the weakened transverse beam line and the nearby stringer nodes.</p>
+<p>This is a useful result because it shows a local damage mechanism rather than a global load-path breakdown. The side trusses still provide the main span-carrying action, but the floor system near the weakened beam becomes more flexible and shows larger local downward movement. The deformed-shape figure therefore supports the interpretation that weakening the transverse framing changes local deck-level behavior more strongly than overall global bridge form.</p>
+<p>The figures also continue to show the dual structural character of the bridge. The frame subsystem controls the local deformation pattern at the loaded deck level, while the truss subsystem controls the broader span-level restraint and redistribution. In this scenario, the weakened beam line becomes the most visually important local feature, but the bridge still responds as a connected mixed truss-frame system.</p>
+<h4 id="494-comparison-with-the-revised-dead-load-baseline">4.9.4 Comparison with the Revised Dead-Load Baseline</h4>
+<p>The main comparison for this scenario is local vertical displacement in the floor system.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Baseline</th>
+<th style="text-align:right">Weakened floor beam</th>
+<th style="text-align:right">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node 32 vertical displacement</td>
+<td style="text-align:right"><code>9.0928 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>1.1114 × 10^-4 ft</code></td>
+<td style="text-align:right"><code>+22.2%</code></td>
+</tr>
+<tr>
+<td>Node 29 vertical displacement</td>
+<td style="text-align:right"><code>8.6486 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>8.6989 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>+0.6%</code></td>
+</tr>
+<tr>
+<td>Node 35 vertical displacement</td>
+<td style="text-align:right"><code>8.6486 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>8.6989 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>+0.6%</code></td>
+</tr>
+<tr>
+<td>Node 4 vertical displacement</td>
+<td style="text-align:right"><code>6.9303 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>6.9267 × 10^-5 ft</code></td>
+<td style="text-align:right">about <code>0%</code></td>
+</tr>
+</tbody>
+</table>
+<p>The maximum vertical displacement remains at node <code>32</code>, but its magnitude increases substantially. This is the clearest numerical sign that the weakened floor beam is affecting the local floor-system response.</p>
+<p>The neighboring stringer-line nodes <code>29</code> and <code>35</code> change only slightly, and the nearby truss node <code>4</code> remains almost unchanged. This pattern is important because it shows that the dominant effect is local floor-system flexibility rather than a major loss of global truss stiffness.</p>
+<h4 id="495-engineering-interpretation">4.9.5 Engineering Interpretation</h4>
+<p>This scenario is the strongest local damage-style case in the bridge study. The results show that reducing the stiffness of one important floor-beam line does not cause a global structural breakdown, but it does create a clear increase in local deck-level deformation.</p>
+<p>That is physically reasonable. Gravity load enters the floor system first, so weakening a transverse floor beam should affect the local displacement field and transverse load sharing more directly than it affects the overall truss geometry. The side trusses still provide the main span-level resistance, which is why the bridge remains globally stable and the nearby truss-joint displacement changes remain modest.</p>
+<p>This scenario therefore reveals an important aspect of the bridge behavior. Under the present loading assumptions, the floor system is more sensitive to local stiffness loss than the main side trusses are. In practical terms, that means floor-system deterioration can produce noticeable serviceability effects even when the bridge as a whole still appears globally stable.</p>
+<h4 id="496-comparison-with-the-extreme-missing-diagonals-scenario">4.9.6 Comparison with the Extreme Missing-Diagonals Scenario</h4>
+<p>The weakened-floor-beam case and the extreme missing-diagonals overload case are useful together because they show two different structural response modes.</p>
+<ul>
+<li>The extreme missing-diagonals overload case produces a much larger and more global bridge distortion.</li>
+<li>The weakened-floor-beam case produces a clearer local floor-system response with much less global disturbance.</li>
+</ul>
+<h4 id="497-why-this-scenario-matters-for-the-project">4.9.7 Why This Scenario Matters for the Project</h4>
+<p>This scenario addresses one of the main goals of the final project, which is not only to run a complex bridge model but also to interpret how the response changes when a meaningful assumption is altered. The weakened-floor-beam case shows that the bridge is not equally sensitive to all changes. A local loss of floor-beam stiffness creates a strong local displacement response without causing the much larger global change seen in the extreme truss-damage case.</p>
+<p>This is exactly the kind of engineering interpretation the project outline calls for. The results go beyond simply reporting output tables. They show where the structure is most sensitive, what kind of subsystem is controlling the response, and how the nature of the structural change affects the bridge behavior.</p>
+<h3 id="410-comparative-discussion-of-baseline-and-scenario-cases">4.10 Comparative Discussion of Baseline and Scenario Cases</h3>
+<h4 id="4101-summary-comparison">4.10.1 Summary Comparison</h4>
+<p>The scenario study shows that the current bridge model is not equally sensitive to all structural changes. The revised dead-load baseline provides the reference load path. The missing diagonal case changes the internal truss force path but causes only a very small increase in the maximum vertical displacement. The weakened floor-beam case produces the largest and clearest local response change.</p>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th style="text-align:right">Maximum vertical displacement at node 32</th>
+<th style="text-align:right">Change from baseline</th>
+<th>Main structural meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revised dead-load baseline</td>
+<td style="text-align:right"><code>9.0928 × 10^-5 ft</code></td>
+<td style="text-align:right">Reference</td>
+<td>Baseline mixed load path</td>
+</tr>
+<tr>
+<td>Missing diagonal</td>
+<td style="text-align:right"><code>9.1476 × 10^-5 ft</code></td>
+<td style="text-align:right"><code>+0.6%</code></td>
+<td>Truss force redistribution</td>
+</tr>
+<tr>
+<td>Weakened floor beam</td>
+<td style="text-align:right"><code>1.1114 × 10^-4 ft</code></td>
+<td style="text-align:right"><code>+22.2%</code></td>
+<td>Local floor-system sensitivity</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4102-baseline-versus-missing-diagonal">4.10.2 Baseline Versus Missing Diagonal</h4>
+<p>The missing diagonal scenario removes one left-side diagonal member near midspan while keeping the rest of the bridge assumptions unchanged. In the current model, this causes only a small increase in the maximum vertical displacement at node 32, from <code>9.0928 × 10^-5 ft</code> to <code>9.1476 × 10^-5 ft</code>, which is about <code>0.6%</code>. Nearby displacement changes are also small. Node 29 decreases slightly, node 35 increases slightly, and node 4 increases by about <code>1.5%</code>.</p>
+<p>The importance of the missing diagonal case is therefore not large global displacement amplification. Its main value is that it changes the internal truss force path. This makes it a strong scenario for showing how a local truss damage case can redistribute force demand without necessarily producing an equally dramatic change in overall bridge deflection.</p>
+<h4 id="4103-baseline-versus-weakened-floor-beam">4.10.3 Baseline Versus Weakened Floor Beam</h4>
+<p>The weakened floor-beam scenario reduces the stiffness of the loaded floor-beam line while keeping the geometry, supports, and loading unchanged. This case produces a much larger local response than the missing diagonal case. The maximum vertical displacement at node 32 increases from <code>9.0928 × 10^-5 ft</code> to <code>1.1114 × 10^-4 ft</code>, which is about <code>22.2%</code>. Nodes 29 and 35 increase only slightly by about <code>0.6%</code>, while nearby truss node 4 changes by essentially zero.</p>
+<p>This is an important structural result. The dominant effect is concentrated in the floor system rather than in the truss system as a whole. The bridge remains globally stable, but the local deck-level flexibility increases noticeably in the weakened beam region. This indicates that, under the current loading assumptions, the bridge is more sensitive to weakening of the loaded transverse floor-beam line than to the single missing diagonal case.</p>
+<h4 id="4104-what-the-scenario-set-reveals-about-the-bridge">4.10.4 What the Scenario Set Reveals About the Bridge</h4>
+<p>Taken together, the two scenario cases help separate truss-system sensitivity from floor-system sensitivity. The missing diagonal case shows that local truss damage can be important even when the change in global displacement is small. The weakened floor-beam case shows that local floor-system weakness can produce a much clearer increase in local deck-level displacement.</p>
+<p>This comparison is useful because it aligns with the mixed structural character of the bridge. The side trusses and the floor system do not play the same role. The truss system is critical for span-level force redistribution, while the floor system is critical for local load introduction and local serviceability response. The current scenario results reflect that difference clearly.</p>
+<h2 id="references">References</h2>
+<p>Historic American Engineering Record. (1996). <em>Fort Griffin Iron Truss Bridge</em> (HAER No. TX-63). Report prepared as part of the Texas Historic Bridge Recording Project sponsored by the Texas Department of Transportation.</p>
+<p>Maniar, D. R., Engelhardt, M. D., &amp; Leary, D. E. (2003, March 1). <em>Evaluation and rehabilitation of historic metal truss bridges. A case study of an off-system historic metal truss bridge in Shackelford County, Texas</em> (FHWA/TX-03/1741-3). Center for Transportation Research, The University of Texas at Austin. <a href="https://rosap.ntl.bts.gov/view/dot/86168">https://rosap.ntl.bts.gov/view/dot/86168</a></p>
+<h2 id="hand_verification-file">Hand_verification file:</h2>
+<p><a href="report/Hand%20verification/Frame%20baseline.pdf">Handdrawn solution 1 PDF</a><br>
+<a href="report/Hand%20verification/Frame%20Special.pdf">Handdrawn solution 2 PDF</a></p>
+
+</body>
+</html>

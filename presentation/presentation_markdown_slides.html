@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Mixed 3D Truss and Frame Analysis of the Fort Griffin Iron Truss Bridge</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="mixed-3d-truss-and-frame-analysis-of-the-fort-griffin-iron-truss-bridge">Mixed 3D Truss and Frame Analysis of the Fort Griffin Iron Truss Bridge</h1>
+<p>Final Project Presentation</p>
+<p>Anzara Zabin
+CEE 6501 Final Project</p>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\report\Case%20study\images\ELEVATION%20FROM%20S.%20-%20Fort%20Griffin%20Iron%20Truss%20Bridge,%20Spanning%20Clear%20Fork%20of%20Brazos%20River%20at%20County%20Route%20188,%20Fort%20Griffin,%20Shackelford%20County,%20TX.png" alt="Elevation from south of the Fort Griffin Iron Truss Bridge"></p>
+<p><em>Figure. Elevation from south of the Fort Griffin Iron Truss Bridge.</em></p>
+<hr>
+<h1 id="roadmap">Roadmap</h1>
+<ul>
+<li>Code goal and workflow</li>
+<li>Repository organization</li>
+<li>User example files and expected outputs</li>
+<li>Validation summary</li>
+<li>Fort Griffin bridge and why it was chosen</li>
+<li>Modeling assumptions, material properties, loads, and limitations</li>
+<li>Revised dead load baseline</li>
+<li>Missing diagonal scenario</li>
+<li>Weakened floor beam scenario</li>
+<li>Final comparison and takeaways</li>
+</ul>
+<hr>
+<h1 id="code-goal-and-workflow">Code Goal and Workflow</h1>
+<ul>
+<li>One Python workflow for mixed <code>3D_truss</code> and <code>3D_frame</code> analysis</li>
+<li>User defines the structure through a JSON file</li>
+<li><code>main.ipynb</code> reads the model and runs the analysis</li>
+<li>Preprocess, assemble, solve, recover results, save outputs</li>
+<li>Same workflow used for user examples, validation models, and final bridge cases</li>
+</ul>
+<h1 id="repository-organization">Repository Organization</h1>
+<ul>
+<li><code>main.ipynb</code></li>
+<li><code>helpers/</code></li>
+<li><code>inputs/user_examples/</code></li>
+<li><code>inputs/validation/</code></li>
+<li><code>inputs/final_bridge/</code></li>
+<li><code>outputs/runs/</code></li>
+<li><code>outputs/user_examples/simple_plots/</code></li>
+<li><code>outputs/user_examples/plotly_plots/</code></li>
+<li><code>report/</code></li>
+<li><code>presentation/</code></li>
+</ul>
+<h2 id="main-design-idea">Main design idea</h2>
+<p>A new user should only need to change the selected model or <code>model_path</code>, not the solver itself.</p>
+<hr>
+<h1 id="helper-files-used-in-the-project">Helper Files Used in the Project</h1>
+<h2 id="core-helper-modules">Core helper modules</h2>
+<ul>
+<li><code>helpers/preprocess.py</code></li>
+<li><code>helpers/elements_3d.py</code></li>
+<li><code>helpers/solver.py</code></li>
+<li><code>helpers/postprocess.py</code></li>
+<li><code>helpers/output_writer.py</code></li>
+<li><code>helpers/plotting_simple.py</code></li>
+<li><code>helpers/plotting_plotly.py</code></li>
+</ul>
+<h2 id="design-idea">Design idea</h2>
+<p>The notebook controls the run, but the structural logic is stored in reusable helper files.</p>
+<hr>
+<h1 id="what-each-helper-file-contains">What Each Helper File Contains</h1>
+<h2 id="preprocesspy"><code>preprocess.py</code></h2>
+<ul>
+<li>reads the JSON file</li>
+<li>checks the model blocks</li>
+<li>builds node and element lookup data</li>
+<li>creates the global degree of freedom map</li>
+<li>identifies free and restrained DOFs</li>
+</ul>
+<h2 id="elements_3dpy"><code>elements_3d.py</code></h2>
+<ul>
+<li>truss element routines</li>
+<li>frame element routines</li>
+<li>local stiffness and transformation logic</li>
+<li>element load and feature contributions</li>
+</ul>
+<h2 id="solverpy"><code>solver.py</code></h2>
+<ul>
+<li>global assembly</li>
+<li>partitioning of the global system</li>
+<li>solution for unknown displacements</li>
+<li>recovery of reactions</li>
+</ul>
+<hr>
+<h1 id="what-each-helper-file-contains-1">What Each Helper File Contains</h1>
+<h2 id="postprocesspy"><code>postprocess.py</code></h2>
+<ul>
+<li>recovers element level quantities after solving</li>
+<li>computes local and global end force results</li>
+<li>prepares derived structural response values</li>
+</ul>
+<h2 id="output_writerpy"><code>output_writer.py</code></h2>
+<ul>
+<li>organizes output tables</li>
+<li>writes CSV files and summary files</li>
+<li>creates the saved run folder in <code>outputs/runs/&lt;model_name&gt;/</code></li>
+</ul>
+<h2 id="plotting_simplepy"><code>plotting_simple.py</code></h2>
+<ul>
+<li>static undeformed and deformed plots</li>
+<li>optional node and element labels</li>
+</ul>
+<h2 id="plotting_plotlypy"><code>plotting_plotly.py</code></h2>
+<ul>
+<li>interactive 3D structural plots</li>
+<li>hover information</li>
+<li>saved HTML and PNG figures</li>
+</ul>
+<hr>
+<h1 id="main-notebook-workflow">Main Notebook Workflow</h1>
+<h2 id="step-1--select-a-model">Step 1  select a model</h2>
+<ul>
+<li>user picks <code>selected_example</code></li>
+<li>notebook sets <code>model_path</code></li>
+</ul>
+<h2 id="step-2--import-helper-modules">Step 2  import helper modules</h2>
+<ul>
+<li>notebook loads the helper files</li>
+<li>same helper files are reused for all models</li>
+</ul>
+<h2 id="step-3--preprocess-the-model">Step 3  preprocess the model</h2>
+<ul>
+<li><code>preprocess_model(model_path)</code></li>
+</ul>
+<h2 id="step-4--solve-the-model">Step 4  solve the model</h2>
+<ul>
+<li><code>solve_complete_model(clean_model, data)</code></li>
+</ul>
+<hr>
+<h1 id="workflow-from-main-to-outputs">Workflow from Main to Outputs</h1>
+<h2 id="after-solving">After solving</h2>
+<ul>
+<li><code>write_run_outputs(...)</code></li>
+<li>saves tables and summaries in <code>outputs/runs/&lt;model_name&gt;/</code></li>
+</ul>
+<h2 id="plot-generation">Plot generation</h2>
+<ul>
+<li><code>plot_structure_simple(...)</code></li>
+<li><code>plot_structure_plotly(...)</code></li>
+</ul>
+<h2 id="final-products">Final products</h2>
+<ul>
+<li>notebook tables</li>
+<li>CSV and JSON outputs</li>
+<li>static figures</li>
+<li>interactive Plotly views</li>
+</ul>
+<hr>
+<h1 id="user-example-files">User Example Files</h1>
+<h2 id="starter-files-for-a-new-user">Starter files for a new user</h2>
+<ul>
+<li><code>inputs/user_examples/truss_example_for_user.json</code></li>
+<li><code>inputs/user_examples/beam_example_for_user.json</code></li>
+</ul>
+<h2 id="what-they-show">What they show</h2>
+<h3 id="truss-example">Truss example</h3>
+<ul>
+<li>nodes</li>
+<li>truss connectivity</li>
+<li>supports</li>
+<li>nodal load input</li>
+</ul>
+<h3 id="beam-example">Beam example</h3>
+<ul>
+<li><code>3D_frame</code> input</li>
+<li>section properties</li>
+<li>member load input</li>
+<li>bending response</li>
+</ul>
+<hr>
+<h1 id="what-a-user-gets-after-running-a-model">What a User Gets After Running a Model</h1>
+<h2 id="in-the-notebook">In the notebook</h2>
+<ul>
+<li>model summary</li>
+<li>node displacements</li>
+<li>support reactions</li>
+<li>element local end forces</li>
+<li>element derived results</li>
+</ul>
+<h2 id="saved-output-folder">Saved output folder</h2>
+<ul>
+<li><code>outputs/runs/&lt;model_name&gt;/</code></li>
+</ul>
+<h2 id="saved-plots">Saved plots</h2>
+<ul>
+<li><code>outputs/user_examples/simple_plots/</code></li>
+<li><code>outputs/user_examples/plotly_plots/</code></li>
+</ul>
+<h2 id="main-output-files">Main output files</h2>
+<ul>
+<li><code>summary.md</code></li>
+<li><code>global_summary.json</code></li>
+<li><code>node_displacements.csv</code></li>
+<li><code>support_reactions.csv</code></li>
+<li><code>element_local_end_forces.csv</code></li>
+<li><code>element_derived_results.csv</code></li>
+</ul>
+<hr>
+<h2 id="main-design-idea-1">Main design idea</h2>
+<p>A new user should only need to change the selected model or <code>model_path</code>, not the solver itself.</p>
+<hr>
+<h1 id="user-example-files-1">User Example Files</h1>
+<h2 id="starter-files-for-a-new-user-1">Starter files for a new user</h2>
+<ul>
+<li><code>inputs/user_examples/truss_example_for_user.json</code></li>
+<li><code>inputs/user_examples/beam_example_for_user.json</code></li>
+</ul>
+<h2 id="what-they-show-1">What they show</h2>
+<h3 id="truss-example-1">Truss example</h3>
+<ul>
+<li>nodes</li>
+<li>truss connectivity</li>
+<li>supports</li>
+<li>nodal load input</li>
+</ul>
+<h3 id="beam-example-1">Beam example</h3>
+<ul>
+<li><code>3D_frame</code> input</li>
+<li>section properties</li>
+<li>member load input</li>
+<li>bending response</li>
+</ul>
+<hr>
+<h1 id="github-repository">Github Repository</h1>
+<p><a href="https://github.com/azabin3/cee6501-AZ-final-project">https://github.com/azabin3/cee6501-AZ-final-project</a></p>
+<h1 id="validation-summary">Validation Summary</h1>
+<h2 id="verified-before-bridge-application">Verified before bridge application</h2>
+<ul>
+<li>3D truss behavior</li>
+<li>3D frame behavior</li>
+<li>member releases</li>
+<li>support displacement</li>
+<li>temperature loading</li>
+<li>fabrication error</li>
+</ul>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\validation\plotly_plots\validation_3d_truss_with_loads_interactive_def+undef.png" alt="bg right:40% contain"></p>
+<p>The bridge study was only done after the solver reproduced the required benchmark behaviors.</p>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\validation\simple_plots\3D_frame_validation.png" alt="bg right:42% contain"></p>
+<hr>
+<h1 id="why-fort-griffin-bridge">Why Fort Griffin Bridge</h1>
+<ul>
+<li>Real bridge with available photos, drawings, and case-study information</li>
+<li>Naturally combines truss action and frame action</li>
+<li>Side trusses are mainly axial-force dominated</li>
+<li>Floor beams and stringers are bending dominated</li>
+<li>Good final case for a mixed solver rather than a truss-only model</li>
+</ul>
+<hr>
+<h1 id="features">Features</h1>
+<ul>
+<li>Built in 1885 by the King Iron and Bridge Manufacturing Company</li>
+<li>Historic wrought iron pin-connected Pratt through truss in Shackelford County, Texas :contentReference[oaicite:0]{index=0}</li>
+<li>Main span length about 109 to 110 ft</li>
+<li>Overall width about 20 ft</li>
+<li>Clear roadway width about 13 ft 6 in</li>
+<li>Truss height about 18 ft</li>
+</ul>
+<hr>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\report\Case%20study\images\BARREL%20VIEW%20FROM%20E.%20-%20Fort%20Griffin%20Iron%20Truss%20Bridge,%20Spanning%20Clear%20Fork%20of%20Brazos%20River%20at%20County%20Route%20188,%20Fort%20Griffin,%20Shackelford%20County,%20TX.png" alt="Barrel view from east of the Fort Griffin Iron Truss Bridge">
+<em>Figure. Barrel view from east of the Fort Griffin Iron Truss Bridge.</em></p>
+<hr>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\report\Case%20study\images\ELEVATION%20FROM%20S.%20-%20Fort%20Griffin%20Iron%20Truss%20Bridge,%20Spanning%20Clear%20Fork%20of%20Brazos%20River%20at%20County%20Route%20188,%20Fort%20Griffin,%20Shackelford%20County,%20TX.png" alt="Elevation from south of the Fort Griffin Iron Truss Bridge"></p>
+<p><em>Figure. Elevation from south of the Fort Griffin Iron Truss Bridge.</em></p>
+<hr>
+<h1 id="model-setup-and-assumptions">Model Setup and Assumptions</h1>
+<h2 id="idealization">Idealization</h2>
+<ul>
+<li>Main span only
+<img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\report\Case%20study\images\Overall%20elevation%20of%20the%20bridge.png" alt="Overall elevation of the bridge"></li>
+</ul>
+<p><em>Figure. Overall elevation of the bridge.</em></p>
+<hr>
+<ul>
+<li>Side trusses modeled with <code>3D_truss</code> elements</li>
+<li>Floor beams modeled with <code>3D_frame</code> elements</li>
+<li>Stringers modeled with <code>3D_frame</code> elements</li>
+<li>Top lateral bracing included as truss elements</li>
+</ul>
+<h2 id="coordinate-system">Coordinate system</h2>
+<ul>
+<li><code>x</code> along span</li>
+<li><code>y</code> across width</li>
+<li><code>z</code> vertical</li>
+</ul>
+<h2 id="units">Units</h2>
+<ul>
+<li>feet</li>
+<li>kips</li>
+</ul>
+<hr>
+<hr>
+<h1 id="material-properties-loads-and-limitations">Material Properties, Loads, and Limitations</h1>
+<h2 id="material-assumption">Material assumption</h2>
+<ul>
+<li>Single wrought iron material</li>
+<li>Linear elastic behavior</li>
+</ul>
+<h2 id="baseline-load-assumptions">Baseline load assumptions</h2>
+<ul>
+<li>Redistributed dead load on modeled stringer lines</li>
+<li>Floor beam self weight surrogate</li>
+<li>Truss nodal dead load surrogate</li>
+</ul>
+<h2 id="main-limitations">Main limitations</h2>
+<ul>
+<li>Simplified supports</li>
+<li>Partly assumed member properties</li>
+<li>Deck not modeled explicitly</li>
+<li>Bottom lateral bracing not included</li>
+<li>Idealized connection behavior</li>
+</ul>
+<hr>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\report\Case%20study\images\Case%20study%202D%20truss%20model.png" alt="Case study 2D truss model"></p>
+<p><em>Figure. Case study 2D truss model.</em></p>
+<hr>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\simple_plots\fort_griffin_revised_baseline_undeformed_plus_deformed.png" alt="Fort Griffin revised baseline undeformed and deformed"></p>
+<p><em>Figure. Fort Griffin revised baseline undeformed and deformed view.</em></p>
+<hr>
+<h1 id="dead-load-baseline">Dead Load Baseline</h1>
+<h2 id="main-observations">Main observations</h2>
+<ul>
+<li>Floor system receives gravity load first</li>
+<li>Load is transferred into the two side trusses</li>
+<li>Largest displacement occurs in the central floor system region</li>
+<li>Response is physically reasonable for a mixed truss and frame bridge</li>
+</ul>
+<h2 id="key-value">Key value</h2>
+<ul>
+<li>Node 32 maximum vertical displacement</li>
+</ul>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\plotly_plots\fort_griffin_revised_deadload_undeformed_plus_deformed.png" alt="Fort Griffin revised dead-load baseline Plotly undeformed and deformed"></p>
+<h2 id="figure-fort-griffin-revised-dead-load-baseline-plotly-undeformed-and-deformed-view"><em>Figure. Fort Griffin revised dead-load baseline Plotly undeformed and deformed view.</em></h2>
+<h1 id="scenario-1--missing-diagonal">Scenario 1  Missing Diagonal</h1>
+<h2 id="change-from-baseline">Change from baseline</h2>
+<ul>
+<li>One left side diagonal removed near midspan</li>
+<li>Geometry, supports, and loads otherwise unchanged</li>
+<li>Load changed in surrounding noads</li>
+</ul>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\simple_plots\scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed.png" alt="Extreme missing diagonals overload scenario undeformed and deformed"></p>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\plotly_plots\scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed_2.png" alt="Scenario extreme missing diagonals overload undeformed and deformed"></p>
+<p><em>Figure. Extreme missing diagonals overload case, undeformed and deformed view.</em></p>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\plotly_plots\scenario_extreme_missing_diagonals_overload_undeformed_plus_deformed_3.png" alt="Scenario extreme missing diagonals overload undeformed and deformed"></p>
+<p><em>Figure. Extreme missing diagonals overload case, showing relative displacement.</em></p>
+<h2 id="main-result">Main result</h2>
+<ul>
+<li>Node 32 maximum vertical displacement<br>
+<code>9.1476 × 10^-5 ft</code></li>
+<li>Change from baseline<br>
+<code>+0.6%</code></li>
+</ul>
+<h2 id="interpretation">Interpretation</h2>
+<ul>
+<li>Small change in global displacement</li>
+<li>More important for truss force redistribution than for visible bridge sag</li>
+</ul>
+<hr>
+<h1 id="scenario-2--weakened-floor-beam">Scenario 2  Weakened Floor Beam</h1>
+<h2 id="change-from-baseline-1">Change from baseline</h2>
+<ul>
+<li>Loaded floor beam line weakened</li>
+<li>Geometry, supports, and loads unchanged</li>
+</ul>
+<h2 id="main-result-1">Main result</h2>
+<ul>
+<li>
+<p>Node 32 maximum vertical displacement</p>
+</li>
+<li>
+<p>Change from baseline<br>
+<code>+22.2%</code></p>
+</li>
+</ul>
+<h2 id="interpretation-1">Interpretation</h2>
+<ul>
+<li>Strong local floor system sensitivity</li>
+<li>Bridge remains globally stable</li>
+<li>Local deck level flexibility increases noticeably</li>
+</ul>
+<p><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\simple_plots\scenario_weakened_floor_beam_from_deadload_undeformed_plus_deformed.png" alt="bg right:48% contain"></p>
+<hr>
+<h2 id=""><img src="file:///c:\Users\azabin3\CE6501\cee6501-AZ-final-project\outputs\final_bridge\plotly_plots\scenario_weakened_floor_beam_from_deadload_undeformed_plus_deformed.png" alt="Weakened floor beam scenario Plotly undeformed and deformed"></h2>
+<h1 id="key-findings">Key Findings</h1>
+<ul>
+<li>The solver supports mixed <code>3D_truss</code> and <code>3D_frame</code> analysis in one workflow</li>
+<li>User input is organized through JSON files</li>
+<li>Validation confirmed the required structural behaviors before bridge application</li>
+<li>The Fort Griffin bridge shows a clear mixed truss and frame load path</li>
+<li>The baseline response is governed by floor system load transfer into the side trusses</li>
+<li>The missing diagonal case mainly changes the truss force path</li>
+<li>The weakened floor beam case produces the clearest local damage response</li>
+</ul>
+<hr>
+<h1 id="thank-you">Thank You</h1>
+<p>Questions</p>
+
+            
+            
+        </body>
+        </html>
