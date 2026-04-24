@@ -17,7 +17,7 @@
 
 ## Maximum displacement
 - node  32
-- magnitude  9.187733789031176e-05
+- magnitude  9.160051971027611e-05
 
 ## Saved files
 - `global_summary.json`

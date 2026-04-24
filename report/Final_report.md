@@ -509,7 +509,7 @@ The example was recreated as a project input file
 
 `inputs/validation/Validation files from previous examples/validation_3d_truss_with_nodal_loads.json`
 
-The project input format stores nodes, materials, sections, elements, supports, and nodal loads in a single JSON file. During preprocessing, the model is converted into analysis-ready data structures including the node DOF map, restrained DOF list, free DOF list, and global nodal load vector. The project code is designed so that the user defines the full structural problem in the input file rather than modifying source code. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+The project input format stores nodes, materials, sections, elements, supports, and nodal loads in a single JSON file. During preprocessing, the model is converted into analysis-ready data structures including the node DOF map, restrained DOF list, free DOF list, and global nodal load vector. The project code is designed so that the user defines the full structural problem in the input file rather than modifying source code.
 
 #### 5. Code results
 
@@ -727,7 +727,7 @@ If you want to also show the interactive-style figure in markdown, use
 
 ![Validation 3D frame interactive](../outputs/validation/plotly_plots/validation_3d_frame_interactive_valid.png)
 
-Use only the image that exported correctly.
+
 
 #### 8. Saved outputs
 
@@ -896,19 +896,14 @@ This confirms that the joint hinge is functioning correctly in the project model
 
 Figure X shows the released-joint frame in undeformed and deformed form. The undeformed geometry is shown in gray and the deformed geometry is shown in red. The deformed shape displays a clear change in slope at node 2, which is consistent with hinge behavior. The updated plotting helper also shows curved frame deformation rather than a straight chord between end nodes.
 
-Use this markdown image line for the simple figure
+The moment release
 
-![Figure X. Moment release verification showing undeformed and deformed geometry](../outputs/validation/simple_plots/verification_moment_release_frame.png)
+![Figure X alternate. Moment release verification interactive view](../outputs/validation/plotly_plots/verification_moment_release_frame_for_report.png)
 
-If you also want the interactive-style view in markdown, use
-
-![Figure X alternate. Moment release verification interactive view](../outputs/validation/plotly_plots/verification_moment_release_frame.png)
-
-The simple figure is cleaner for the report. The interactive-style figure is useful as a supporting figure.
 
 #### 8. Saved outputs
 
-This run generated the standard saved project outputs in the model run folder, including nodal displacement tables, support reaction tables, local and global element force tables, derived element results, and summary files. The output-writing path is part of the current project framework, so this verification case can be reviewed later without rerunning the notebook. :contentReference[oaicite:2]{index=2}
+This run generated the standard saved project outputs in the model run folder, including nodal displacement tables, support reaction tables, local and global element force tables, derived element results, and summary files. The output-writing path is part of the current project framework, so this verification case can be reviewed later without rerunning the notebook.
 
 Typical saved files for this case include
 
@@ -1404,7 +1399,7 @@ The bridge is well suited to this project because the main span can be idealized
 
 Only the main span is modeled in this project. This is a deliberate scope decision. The main span already captures the most important mixed behavior needed for the final project, while excluding the approach spans avoids additional uncertainty related to bent behavior, connection idealization, and support assumptions.
 
-![Barrel view from east](report/Case study/images/BARREL VIEW FROM E. - Fort Griffin Iron Truss Bridge, Spanning Clear Fork of Brazos River at County Route 188, Fort Griffin, Shackelford County, TX.png)
+
 ![Barrel view from east](Case%20study/images/BARREL%20VIEW%20FROM%20E.%20-%20Fort%20Griffin%20Iron%20Truss%20Bridge,%20Spanning%20Clear%20Fork%20of%20Brazos%20River%20at%20County%20Route%20188,%20Fort%20Griffin,%20Shackelford%20County,%20TX.png)
 
 *Figure 4.1. Barrel view from east of the Fort Griffin Iron Truss Bridge.*
@@ -1526,7 +1521,7 @@ The  baseline model now includes two important refinements compared with the ear
 
 #### 4.6.5 Current Baseline Limitations
 
-The baseline is still a first-pass bridge model. The support assumptions remain simplified, the truss and frame properties are still partly assumed, the deck is not modeled explicitly, bottom lateral bracing has not yet been added, and explicit self-weight for all members has not yet been introduced separately. These limitations will be important when interpreting both the baseline response and the scenario-study results.
+The baseline is still a first-pass bridge model. The support assumptions remain simplified, the truss and frame properties are still partly assumed, the deck is not modeled explicitly, bottom lateral bracing has not yet been added, and explicit self-weight for all members has not yet been introduced separately.
 
 #### 4.6.6 Planned Scenario Studies
 
@@ -1535,8 +1530,7 @@ The bridge study will compare the baseline against selected altered cases. The t
 - missing diagonal
 - weakened floor beam
 
-A third case, weakened center stringer, may be used as a shorter sensitivity check if needed. These altered cases will be discussed after the baseline model is fully locked.
-
+A third case, weakened center stringer, may be used as a shorter sensitivity check if needed.
 ### 4.7 Baseline Setup with Added Dead Loads
 
 #### 4.7.1 Baseline Loading
@@ -1690,7 +1684,7 @@ This scenario should therefore be interpreted as an extreme combined damage and 
 
 The deformed shape shows a much stronger response than the baseline. The greatest sag is concentrated in the central floor-system region, and the lower chord lines in both truss planes are pulled downward more strongly than in the baseline. The bridge still behaves as a connected structure, but the deformation pattern is much more pronounced and no longer resembles the mild service-type sag of the baseline case.
 
-The figure is especially useful because it makes the mixed structural behavior very clear. The floor system still acts as the first load receiving subsystem, but the local sag becomes much larger and spreads more strongly into the side trusses. At the same time, the removed diagonals reduce the ability of the side trusses to follow the original force path. The result is a bridge response that is still stable in the numerical model but much more strained and visibly distorted.
+The figure makes the mixed structural behavior very clear. The floor system still acts as the first load receiving subsystem, but the local sag becomes much larger and spreads more strongly into the side trusses. At the same time, the removed diagonals reduce the ability of the side trusses to follow the original force path. The result is a bridge response that is still stable in the numerical model but much more strained and visibly distorted.
 
 
 #### 4.8.4 Comparison with the Revised Dead-Load Baseline
@@ -1783,7 +1777,7 @@ This scenario is intended to represent deterioration, section loss, or serious s
 
 The weakened-floor-beam response is clearly different in character from the extreme missing-diagonals overload case. The bridge remains globally coherent, and the deformation is still dominated by vertical sag rather than broad bridge-wide distortion. The largest visible change is concentrated in the central floor-system region, especially along the weakened transverse beam line and the nearby stringer nodes.
 
-This is a useful result because it shows a local damage mechanism rather than a global load-path breakdown. The side trusses still provide the main span-carrying action, but the floor system near the weakened beam becomes more flexible and shows larger local downward movement. The deformed-shape figure therefore supports the interpretation that weakening the transverse framing changes local deck-level behavior more strongly than overall global bridge form.
+This result shows a local damage mechanism rather than a global load-path breakdown. The side trusses still provide the main span-carrying action, but the floor system near the weakened beam becomes more flexible and shows larger local downward movement. The deformed-shape figure therefore supports the interpretation that weakening the transverse framing changes local deck-level behavior more strongly than overall global bridge form.
 
 The figures also continue to show the dual structural character of the bridge. The frame subsystem controls the local deformation pattern at the loaded deck level, while the truss subsystem controls the broader span-level restraint and redistribution. In this scenario, the weakened beam line becomes the most visually important local feature, but the bridge still responds as a connected mixed truss-frame system.
 
@@ -1827,35 +1821,7 @@ This is exactly the kind of engineering interpretation the project outline calls
 
 
 
-### 4.10 Comparative Discussion of Baseline and Scenario Cases
 
-#### 4.10.1 Summary Comparison
-
-The scenario study shows that the current bridge model is not equally sensitive to all structural changes. The revised dead-load baseline provides the reference load path. The missing diagonal case changes the internal truss force path but causes only a very small increase in the maximum vertical displacement. The weakened floor-beam case produces the largest and clearest local response change.
-
-| Case | Maximum vertical displacement at node 32 | Change from baseline | Main structural meaning |
-|---|---:|---:|---|
-| Revised dead-load baseline | `9.0928 × 10^-5 ft` | Reference | Baseline mixed load path |
-| Missing diagonal | `9.1476 × 10^-5 ft` | `+0.6%` | Truss force redistribution |
-| Weakened floor beam | `1.1114 × 10^-4 ft` | `+22.2%` | Local floor-system sensitivity |
-
-#### 4.10.2 Baseline Versus Missing Diagonal
-
-The missing diagonal scenario removes one left-side diagonal member near midspan while keeping the rest of the bridge assumptions unchanged. In the current model, this causes only a small increase in the maximum vertical displacement at node 32, from `9.0928 × 10^-5 ft` to `9.1476 × 10^-5 ft`, which is about `0.6%`. Nearby displacement changes are also small. Node 29 decreases slightly, node 35 increases slightly, and node 4 increases by about `1.5%`.
-
-The importance of the missing diagonal case is therefore not large global displacement amplification. Its main value is that it changes the internal truss force path. This makes it a strong scenario for showing how a local truss damage case can redistribute force demand without necessarily producing an equally dramatic change in overall bridge deflection.
-
-#### 4.10.3 Baseline Versus Weakened Floor Beam
-
-The weakened floor-beam scenario reduces the stiffness of the loaded floor-beam line while keeping the geometry, supports, and loading unchanged. This case produces a much larger local response than the missing diagonal case. The maximum vertical displacement at node 32 increases from `9.0928 × 10^-5 ft` to `1.1114 × 10^-4 ft`, which is about `22.2%`. Nodes 29 and 35 increase only slightly by about `0.6%`, while nearby truss node 4 changes by essentially zero.
-
-This is an important structural result. The dominant effect is concentrated in the floor system rather than in the truss system as a whole. The bridge remains globally stable, but the local deck-level flexibility increases noticeably in the weakened beam region. This indicates that, under the current loading assumptions, the bridge is more sensitive to weakening of the loaded transverse floor-beam line than to the single missing diagonal case.
-
-#### 4.10.4 What the Scenario Set Reveals About the Bridge
-
-Taken together, the two scenario cases help separate truss-system sensitivity from floor-system sensitivity. The missing diagonal case shows that local truss damage can be important even when the change in global displacement is small. The weakened floor-beam case shows that local floor-system weakness can produce a much clearer increase in local deck-level displacement.
-
-This comparison is useful because it aligns with the mixed structural character of the bridge. The side trusses and the floor system do not play the same role. The truss system is critical for span-level force redistribution, while the floor system is critical for local load introduction and local serviceability response. The current scenario results reflect that difference clearly.
 
 ## References
 

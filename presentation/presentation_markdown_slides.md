@@ -401,9 +401,8 @@ The bridge study was only done after the solver reproduced the required benchmar
 ## Main result
 
 - Node 32 maximum vertical displacement  
-  `9.1476 × 10^-5 ft`
 - Change from baseline  
-  `+0.6%`
+  `+60%`
 
 ## Interpretation
 
