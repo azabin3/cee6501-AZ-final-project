@@ -1,0 +1,46 @@
+{
+  "model_name": "validation_3d_space_truss",
+  "units": {
+    "length": "mm",
+    "force": "kN",
+    "stress": "kN/mm^2",
+    "area": "mm^2"
+  },
+  "n_nodes": 18,
+  "n_elements": 53,
+  "n_truss_elements": 53,
+  "n_frame_elements": 0,
+  "n_free_dofs": 48,
+  "n_restrained_dofs": 60,
+  "max_displacement_node": 18,
+  "max_displacement_magnitude": 6.871994517020278,
+  "top_truss_members": [
+    {
+      "elem_id": 43,
+      "axial_abs_max": 73.00590745714514,
+      "stress_axial_abs_max": 0.12167651242857523
+    },
+    {
+      "elem_id": 1,
+      "axial_abs_max": 64.68026588748465,
+      "stress_axial_abs_max": 0.053900221572903875
+    },
+    {
+      "elem_id": 49,
+      "axial_abs_max": 55.108535854132626,
+      "stress_axial_abs_max": 0.09184755975688771
+    },
+    {
+      "elem_id": 33,
+      "axial_abs_max": 53.999999999999204,
+      "stress_axial_abs_max": 0.077142857142856
+    },
+    {
+      "elem_id": 42,
+      "axial_abs_max": 47.35237284453645,
+      "stress_axial_abs_max": 0.07892062140756075
+    }
+  ],
+  "top_frame_members": [],
+  "timestamp": "2026-04-24T01:18:45"
+}

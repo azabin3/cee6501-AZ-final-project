@@ -1,0 +1,2 @@
+elem_id,type,node_i,node_j,L,axial_i_local,axial_j_local,axial_abs_max,shear_y_abs_max,shear_z_abs_max,torsion_abs_max,moment_y_abs_max,moment_z_abs_max,moment_abs_max,stress_axial_i,stress_axial_j,stress_axial_abs_max
+1,3D_frame,1,2,10.0,0.0,0.0,0.0,10.0,0.0,0.0,0.0,49.999999999999986,49.999999999999986,0.0,0.0,0.0

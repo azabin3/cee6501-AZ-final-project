@@ -1,0 +1,2 @@
+elem_id,type,node_i,node_j,Fx_i_local,Fy_i_local,Fz_i_local,Mx_i_local,My_i_local,Mz_i_local,Fx_j_local,Fy_j_local,Fz_j_local,Mx_j_local,My_j_local,Mz_j_local
+1,3D_frame,1,2,0.0,1.0,0.0,0.0,0.0,9.999999999999998,0.0,-1.0,0.0,0.0,0.0,-7.598088824778415e-16

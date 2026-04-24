@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-23T16:48:26
+model_name  verification_fabrication_error_frame
+model_path  inputs/validation/Validation files from previous examples/verification_fabrication_error_frame.json
+output_folder  outputs\runs\verification_fabrication_error_frame

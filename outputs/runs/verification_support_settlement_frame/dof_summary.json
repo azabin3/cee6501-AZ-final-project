@@ -1,0 +1,45 @@
+{
+  "model_name": "verification_support_settlement_frame",
+  "ndof_total": null,
+  "free_dofs": [
+    6,
+    7,
+    11,
+    17
+  ],
+  "restrained_dofs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "n_free_dofs": 4,
+  "n_restrained_dofs": 14,
+  "prescribed_displacements": [
+    {
+      "node": 1,
+      "dof": "rz",
+      "value": 0.01
+    },
+    {
+      "node": 3,
+      "dof": "ux",
+      "value": 0.005
+    },
+    {
+      "node": 3,
+      "dof": "uy",
+      "value": -0.01
+    }
+  ]
+}

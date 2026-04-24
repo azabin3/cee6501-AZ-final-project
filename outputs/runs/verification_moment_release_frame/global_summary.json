@@ -1,0 +1,37 @@
+{
+  "model_name": "verification_moment_release_frame",
+  "units": {
+    "length": "m",
+    "force": "kN",
+    "stress": "kN/m^2",
+    "area": "m^2",
+    "moment": "kN-m",
+    "moment_of_inertia": "m^4",
+    "torsion_constant": "m^4",
+    "distributed_load": "kN/m"
+  },
+  "n_nodes": 3,
+  "n_elements": 2,
+  "n_truss_elements": 0,
+  "n_frame_elements": 2,
+  "n_free_dofs": 3,
+  "n_restrained_dofs": 15,
+  "max_displacement_node": 2,
+  "max_displacement_magnitude": 0.0008562571489197803,
+  "top_truss_members": [],
+  "top_frame_members": [
+    {
+      "elem_id": 1,
+      "moment_abs_max": 300.10115318683165,
+      "moment_y_abs_max": 0.0,
+      "moment_z_abs_max": 300.10115318683165
+    },
+    {
+      "elem_id": 2,
+      "moment_abs_max": 0.0,
+      "moment_y_abs_max": 0.0,
+      "moment_z_abs_max": 0.0
+    }
+  ],
+  "timestamp": "2026-04-23T14:54:58"
+}

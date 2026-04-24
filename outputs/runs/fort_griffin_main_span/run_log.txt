@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-22T00:08:15
+model_name  fort_griffin_main_span
+model_path  inputs/final_bridge/fort_griffin_main_span.json
+output_folder  outputs\runs\fort_griffin_main_span

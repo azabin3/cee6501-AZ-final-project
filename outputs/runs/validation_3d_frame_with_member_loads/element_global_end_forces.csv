@@ -1,0 +1,3 @@
+elem_id,type,node_i,node_j,Fx_i_global,Fy_i_global,Fz_i_global,Mx_i_global,My_i_global,Mz_i_global,Fx_j_global,Fy_j_global,Fz_j_global,Mx_j_global,My_j_global,Mz_j_global
+1,3D_frame,1,2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+2,3D_frame,2,3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

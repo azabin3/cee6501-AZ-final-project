@@ -1,0 +1,2 @@
+node_id,x,y,z,Rx,Ry,Rz,Mx,My,Mz,reaction_force_mag,reaction_moment_mag
+1,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,9.999999999999998,1.0,9.999999999999998

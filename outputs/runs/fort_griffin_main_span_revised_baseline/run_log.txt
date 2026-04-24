@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-24T06:25:51
+model_name  fort_griffin_main_span_revised_baseline
+model_path  inputs/final_bridge/fort_griffin_main_span_revised_baseline.json
+output_folder  outputs\runs\fort_griffin_main_span_revised_baseline

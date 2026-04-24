@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-22T00:08:35
+model_name  scenario_weakened_floor_beam
+model_path  inputs/final_bridge/scenario_weakened_floor_beam.json
+output_folder  outputs\runs\scenario_weakened_floor_beam

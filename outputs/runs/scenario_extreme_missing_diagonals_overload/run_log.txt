@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-23T23:09:14
+model_name  scenario_extreme_missing_diagonals_overload
+model_path  inputs/final_bridge/scenario_extreme_missing_diagonals_overload.json
+output_folder  outputs\runs\scenario_extreme_missing_diagonals_overload

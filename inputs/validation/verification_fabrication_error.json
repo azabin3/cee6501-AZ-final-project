@@ -1,0 +1,45 @@
+{
+  "model_name": "verification_fabrication_error",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "nodes": {
+    "1": [0.0, 0.0, 0.0],
+    "2": [10.0, 0.0, 0.0]
+  },
+  "materials": {
+    "steel": {
+      "E": 29000.0,
+      "G": 11200.0,
+      "alpha": 0.0000065
+    }
+  },
+  "sections": {
+    "bar": {
+      "A": 1.0
+    }
+  },
+  "elements": {
+    "1": {
+      "type": "3D_truss",
+      "nodes": [1, 2],
+      "material": "steel",
+      "section": "bar"
+    }
+  },
+  "supports": {
+    "1": ["ux", "uy", "uz", "rx", "ry", "rz"],
+    "2": ["ux", "uy", "uz", "rx", "ry", "rz"]
+  },
+  "nodal_loads": [],
+  "member_loads": [],
+  "prescribed_displacements": [],
+  "temperature_loads": [],
+  "fabrication_errors": [
+    {
+      "element": 1,
+      "deltaL": 0.005
+    }
+  ]
+}

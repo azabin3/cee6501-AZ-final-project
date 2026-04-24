@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-23T14:54:59
+model_name  verification_moment_release_frame
+model_path  inputs/validation/Validation files from previous examples/verification_moment_release_frame.json
+output_folder  outputs\runs\verification_moment_release_frame

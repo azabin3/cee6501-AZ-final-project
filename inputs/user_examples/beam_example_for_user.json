@@ -1,0 +1,70 @@
+{
+  "model_name": "beam_example_for_user",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "nodes": {
+    "1": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "2": [
+      10.0,
+      0.0,
+      0.0
+    ]
+  },
+  "materials": {
+    "steel": {
+      "E": 4176000.0,
+      "G": 1612800.0,
+      "alpha": 6.5e-06
+    }
+  },
+  "sections": {
+    "beam_sec": {
+      "A": 0.2,
+      "Iy": 0.02,
+      "Iz": 0.01,
+      "J": 0.005
+    }
+  },
+  "elements": {
+    "1": {
+      "type": "3D_frame",
+      "nodes": [
+        1,
+        2
+      ],
+      "material": "steel",
+      "section": "beam_sec",
+      "release": {
+        "start": [],
+        "end": []
+      }
+    }
+  },
+  "supports": {
+    "1": [
+      "ux",
+      "uy",
+      "uz",
+      "rx",
+      "ry",
+      "rz"
+    ]
+  },
+  "nodal_loads": [],
+  "member_loads": [
+    {
+      "element": 1,
+      "type": "uniform_local_y",
+      "w": -1.0
+    }
+  ],
+  "prescribed_displacements": [],
+  "temperature_loads": [],
+  "fabrication_errors": []
+}

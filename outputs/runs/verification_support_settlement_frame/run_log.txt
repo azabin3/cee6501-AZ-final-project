@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-23T15:49:08
+model_name  verification_support_settlement_frame
+model_path  inputs/validation/Validation files from previous examples/verification_support_settlement_frame.json
+output_folder  outputs\runs\verification_support_settlement_frame

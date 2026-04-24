@@ -1,0 +1,75 @@
+{
+  "model_name": "validation_3d_frame_with_member_loads",
+  "units": {
+    "length": "m",
+    "force": "kN",
+    "stress": "kN/m^2",
+    "area": "m^2",
+    "moment": "kN-m",
+    "moment_of_inertia": "m^4",
+    "torsion_constant": "m^4",
+    "distributed_load": "kN/m"
+  },
+  "nodes": {
+    "1": [0.0, 0.0, 0.0],
+    "2": [0.0, 10.0, 0.0],
+    "3": [8.0, 10.0, 0.0]
+  },
+  "materials": {
+    "steel_frame": {
+      "E": 200000000.0,
+      "G": 76923076.92307693
+    }
+  },
+  "sections": {
+    "frame_sec": {
+      "A": 0.00474,
+      "Iy": 2.22e-05,
+      "Iz": 2.22e-05,
+      "J": 2.22e-05
+    }
+  },
+  "elements": {
+    "1": {
+      "type": "3D_frame",
+      "nodes": [1, 2],
+      "material": "steel_frame",
+      "section": "frame_sec",
+      "release": {
+        "start": [],
+        "end": []
+      }
+    },
+    "2": {
+      "type": "3D_frame",
+      "nodes": [2, 3],
+      "material": "steel_frame",
+      "section": "frame_sec",
+      "release": {
+        "start": [],
+        "end": []
+      }
+    }
+  },
+  "supports": {
+    "1": ["ux", "uy", "uz", "rx", "ry", "rz"],
+    "2": ["uz", "rx", "ry"],
+    "3": ["ux", "uy", "uz", "rx", "ry"]
+  },
+  "nodal_loads": [],
+  "member_loads": [
+    {
+      "element": 1,
+      "type": "uniform_local_y",
+      "w": -24.0
+    },
+    {
+      "element": 2,
+      "type": "point_local_y_midspan",
+      "P": -75.0
+    }
+  ],
+  "prescribed_displacements": [],
+  "temperature_loads": [],
+  "fabrication_errors": []
+}

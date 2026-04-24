@@ -1,0 +1,29 @@
+{
+  "model_name": "verification_moment_release_frame",
+  "ndof_total": null,
+  "free_dofs": [
+    6,
+    7,
+    17
+  ],
+  "restrained_dofs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "n_free_dofs": 3,
+  "n_restrained_dofs": 15,
+  "prescribed_displacements": []
+}

@@ -1,0 +1,46 @@
+{
+  "model_name": "template_minimal_frame",
+  "units": {
+    "length": "ft",
+    "force": "kip",
+    "stress": "kip/ft^2",
+    "area": "ft^2",
+    "moment": "kip-ft",
+    "moment_of_inertia": "ft^4",
+    "torsion_constant": "ft^4",
+    "distributed_load": "kip/ft",
+    "temperature": "F",
+    "thermal_expansion": "1/F",
+    "symbol_guide": {
+      "L_x_y_z": "ft",
+      "Fx_Fy_Fz": "kip",
+      "Mx_My_Mz": "kip-ft",
+      "E_G": "kip/ft^2",
+      "A": "ft^2",
+      "Iy_Iz": "ft^4",
+      "J": "ft^4",
+      "w": "kip/ft",
+      "deltaT": "F",
+      "alpha": "1/F",
+      "deltaL": "ft"
+    }
+  },
+  "n_nodes": 2,
+  "n_elements": 1,
+  "n_truss_elements": 0,
+  "n_frame_elements": 1,
+  "n_free_dofs": 6,
+  "n_restrained_dofs": 6,
+  "max_displacement_node": 2,
+  "max_displacement_magnitude": 0.011494252873563216,
+  "top_truss_members": [],
+  "top_frame_members": [
+    {
+      "elem_id": 1,
+      "moment_abs_max": 9.999999999999998,
+      "moment_y_abs_max": 0.0,
+      "moment_z_abs_max": 9.999999999999998
+    }
+  ],
+  "timestamp": "2026-04-22T23:40:55"
+}

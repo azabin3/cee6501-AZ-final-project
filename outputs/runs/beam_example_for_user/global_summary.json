@@ -1,0 +1,25 @@
+{
+  "model_name": "beam_example_for_user",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "n_nodes": 2,
+  "n_elements": 1,
+  "n_truss_elements": 0,
+  "n_frame_elements": 1,
+  "n_free_dofs": 6,
+  "n_restrained_dofs": 6,
+  "max_displacement_node": 2,
+  "max_displacement_magnitude": 0.02993295019157087,
+  "top_truss_members": [],
+  "top_frame_members": [
+    {
+      "elem_id": 1,
+      "moment_abs_max": 49.999999999999986,
+      "moment_y_abs_max": 0.0,
+      "moment_z_abs_max": 49.999999999999986
+    }
+  ],
+  "timestamp": "2026-04-24T01:09:24"
+}

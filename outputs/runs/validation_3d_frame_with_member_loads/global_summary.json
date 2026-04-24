@@ -1,0 +1,37 @@
+{
+  "model_name": "validation_3d_frame_with_member_loads",
+  "units": {
+    "length": "m",
+    "force": "kN",
+    "stress": "kN/m^2",
+    "area": "m^2",
+    "moment": "kN-m",
+    "moment_of_inertia": "m^4",
+    "torsion_constant": "m^4",
+    "distributed_load": "kN/m"
+  },
+  "n_nodes": 3,
+  "n_elements": 2,
+  "n_truss_elements": 0,
+  "n_frame_elements": 2,
+  "n_free_dofs": 4,
+  "n_restrained_dofs": 14,
+  "max_displacement_node": 2,
+  "max_displacement_magnitude": 0.0011276929734672012,
+  "top_truss_members": [],
+  "top_frame_members": [
+    {
+      "elem_id": 1,
+      "moment_abs_max": 222.80162983871438,
+      "moment_y_abs_max": 0.0,
+      "moment_z_abs_max": 222.80162983871438
+    },
+    {
+      "elem_id": 2,
+      "moment_abs_max": 154.65119156581522,
+      "moment_y_abs_max": 0.0,
+      "moment_z_abs_max": 154.65119156581522
+    }
+  ],
+  "timestamp": "2026-04-23T16:52:42"
+}

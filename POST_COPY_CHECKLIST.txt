@@ -1,0 +1,9 @@
+﻿Post copy checklist
+
+1. Open README.md and make sure it matches the final repo.
+2. Open main.ipynb and confirm all paths are repo relative.
+3. Search the repo for the old path string
+   C:\Users\azabin3\CE6501\cee6501-final-project
+4. Run the validation examples.
+5. Run the final bridge baseline case.
+6. Commit the cleaned repo only after the checks above.

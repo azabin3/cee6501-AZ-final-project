@@ -1,0 +1,7 @@
+﻿Choose a real license before making this repository public.
+
+Common options
+
+- MIT
+- BSD 3-Clause
+- Apache 2.0

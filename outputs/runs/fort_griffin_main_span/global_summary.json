@@ -1,0 +1,75 @@
+{
+  "model_name": "fort_griffin_main_span",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "n_nodes": 39,
+  "n_elements": 78,
+  "n_truss_elements": 46,
+  "n_frame_elements": 32,
+  "n_free_dofs": 132,
+  "n_restrained_dofs": 102,
+  "max_displacement_node": 32,
+  "max_displacement_magnitude": 9.187733789031176e-05,
+  "top_truss_members": [
+    {
+      "elem_id": 109,
+      "axial_abs_max": 1.5817855226201778,
+      "stress_axial_abs_max": 1.5817855226201778
+    },
+    {
+      "elem_id": 209,
+      "axial_abs_max": 1.5817855226201756,
+      "stress_axial_abs_max": 1.5817855226201756
+    },
+    {
+      "elem_id": 110,
+      "axial_abs_max": 1.5817769756595155,
+      "stress_axial_abs_max": 1.5817769756595155
+    },
+    {
+      "elem_id": 210,
+      "axial_abs_max": 1.581776975659509,
+      "stress_axial_abs_max": 1.581776975659509
+    },
+    {
+      "elem_id": 108,
+      "axial_abs_max": 1.483498259141558,
+      "stress_axial_abs_max": 1.483498259141558
+    }
+  ],
+  "top_frame_members": [
+    {
+      "elem_id": 308,
+      "moment_abs_max": 2.5330379235434357,
+      "moment_y_abs_max": 2.5330379235434357,
+      "moment_z_abs_max": 0.19708244769118977
+    },
+    {
+      "elem_id": 305,
+      "moment_abs_max": 2.533037923543425,
+      "moment_y_abs_max": 2.533037923543425,
+      "moment_z_abs_max": 0.19708244769119077
+    },
+    {
+      "elem_id": 316,
+      "moment_abs_max": 2.533037880157849,
+      "moment_y_abs_max": 2.533037880157849,
+      "moment_z_abs_max": 0.1970845014569642
+    },
+    {
+      "elem_id": 313,
+      "moment_abs_max": 2.533037880157842,
+      "moment_y_abs_max": 2.533037880157842,
+      "moment_z_abs_max": 0.19708450145696466
+    },
+    {
+      "elem_id": 306,
+      "moment_abs_max": 2.5255039982500698,
+      "moment_y_abs_max": 2.5255039982500698,
+      "moment_z_abs_max": 0.06790351714202547
+    }
+  ],
+  "timestamp": "2026-04-22T00:08:15"
+}

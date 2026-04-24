@@ -1,0 +1,76 @@
+{
+  "model_name": "new_model",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "nodes": {
+    "1": [0.0, 0.0, 0.0],
+    "2": [10.0, 0.0, 0.0]
+  },
+  "materials": {
+    "default_material": {
+      "E": 29000.0,
+      "G": 11200.0,
+      "alpha": 0.0000065
+    }
+  },
+  "sections": {
+    "default_truss": {
+      "A": 1.0
+    },
+    "default_frame": {
+      "A": 1.0,
+      "Iy": 1.0,
+      "Iz": 1.0,
+      "J": 1.0
+    }
+  },
+  "elements": {
+    "1": {
+      "type": "3D_frame",
+      "nodes": [1, 2],
+      "material": "default_material",
+      "section": "default_frame",
+      "release": {
+        "start": [],
+        "end": []
+      }
+    }
+  },
+  "supports": {
+    "1": ["ux", "uy", "uz", "rx", "ry", "rz"]
+  },
+  "nodal_loads": [
+    {
+      "node": 2,
+      "values": [0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+    }
+  ],
+  "member_loads": [
+    {
+      "element": 1,
+      "type": "uniform_local_y",
+      "w": -0.1
+    }
+  ],
+  "prescribed_displacements": [
+    {
+      "node": 1,
+      "dof": "ux",
+      "value": 0.0
+    }
+  ],
+  "temperature_loads": [
+    {
+      "element": 1,
+      "deltaT": 0.0
+    }
+  ],
+  "fabrication_errors": [
+    {
+      "element": 1,
+      "deltaL": 0.0
+    }
+  ]
+}

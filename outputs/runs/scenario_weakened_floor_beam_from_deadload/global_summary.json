@@ -1,0 +1,75 @@
+{
+  "model_name": "scenario_weakened_floor_beam_from_deadload",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "n_nodes": 39,
+  "n_elements": 91,
+  "n_truss_elements": 59,
+  "n_frame_elements": 32,
+  "n_free_dofs": 132,
+  "n_restrained_dofs": 102,
+  "max_displacement_node": 32,
+  "max_displacement_magnitude": 0.0008386117317916972,
+  "top_truss_members": [
+    {
+      "elem_id": 204,
+      "axial_abs_max": 10.542972471320375,
+      "stress_axial_abs_max": 10.542972471320375
+    },
+    {
+      "elem_id": 104,
+      "axial_abs_max": 10.492229267612913,
+      "stress_axial_abs_max": 10.492229267612913
+    },
+    {
+      "elem_id": 203,
+      "axial_abs_max": 10.401933730613512,
+      "stress_axial_abs_max": 10.401933730613512
+    },
+    {
+      "elem_id": 103,
+      "axial_abs_max": 10.359356283506662,
+      "stress_axial_abs_max": 10.359356283506662
+    },
+    {
+      "elem_id": 212,
+      "axial_abs_max": 10.287215742343665,
+      "stress_axial_abs_max": 10.287215742343665
+    }
+  ],
+  "top_frame_members": [
+    {
+      "elem_id": 313,
+      "moment_abs_max": 13.837648341289347,
+      "moment_y_abs_max": 13.837648341289347,
+      "moment_z_abs_max": 2.031497734421686
+    },
+    {
+      "elem_id": 316,
+      "moment_abs_max": 13.706831442328044,
+      "moment_y_abs_max": 13.706831442328044,
+      "moment_z_abs_max": 2.0408298653994734
+    },
+    {
+      "elem_id": 305,
+      "moment_abs_max": 13.674176533668637,
+      "moment_y_abs_max": 13.674176533668637,
+      "moment_z_abs_max": 2.093866837704823
+    },
+    {
+      "elem_id": 308,
+      "moment_abs_max": 13.542310837951979,
+      "moment_y_abs_max": 13.542310837951979,
+      "moment_z_abs_max": 2.103395091909995
+    },
+    {
+      "elem_id": 309,
+      "moment_abs_max": 12.440430598096507,
+      "moment_y_abs_max": 12.440430598096507,
+      "moment_z_abs_max": 0.013442062101534091
+    }
+  ],
+  "timestamp": "2026-04-24T00:05:42"
+}

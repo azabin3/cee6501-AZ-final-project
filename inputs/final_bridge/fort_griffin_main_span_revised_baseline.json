@@ -1,0 +1,263 @@
+{
+  "model_name": "fort_griffin_main_span_revised_baseline",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "nodes": {
+    "1": [0.000, 0.0, 0.0],
+    "2": [18.176, 0.0, 0.0],
+    "3": [36.352, 0.0, 0.0],
+    "4": [54.528, 0.0, 0.0],
+    "5": [72.704, 0.0, 0.0],
+    "6": [90.880, 0.0, 0.0],
+    "7": [109.055, 0.0, 0.0],
+    "8": [18.176, 0.0, 20.0],
+    "9": [36.352, 0.0, 20.0],
+    "10": [54.528, 0.0, 20.0],
+    "11": [72.704, 0.0, 20.0],
+    "12": [90.880, 0.0, 20.0],
+
+    "13": [0.000, 20.0, 0.0],
+    "14": [18.176, 20.0, 0.0],
+    "15": [36.352, 20.0, 0.0],
+    "16": [54.528, 20.0, 0.0],
+    "17": [72.704, 20.0, 0.0],
+    "18": [90.880, 20.0, 0.0],
+    "19": [109.055, 20.0, 0.0],
+    "20": [18.176, 20.0, 20.0],
+    "21": [36.352, 20.0, 20.0],
+    "22": [54.528, 20.0, 20.0],
+    "23": [72.704, 20.0, 20.0],
+    "24": [90.880, 20.0, 20.0],
+    
+    "25": [18.176, 5.0, 0.0],
+    "26": [18.176, 10.0, 0.0],
+    "27": [18.176, 15.0, 0.0],
+
+    "28": [36.352, 5.0, 0.0],
+    "29": [36.352, 10.0, 0.0],
+    "30": [36.352, 15.0, 0.0],
+
+    "31": [54.528, 5.0, 0.0],
+    "32": [54.528, 10.0, 0.0],
+    "33": [54.528, 15.0, 0.0],
+
+    "34": [72.704, 5.0, 0.0],
+    "35": [72.704, 10.0, 0.0],
+    "36": [72.704, 15.0, 0.0],
+
+    "37": [90.880, 5.0, 0.0],
+    "38": [90.880, 10.0, 0.0],
+    "39": [90.880, 15.0, 0.0]
+  },
+  "materials": {
+    "wrought_iron": {
+      "E": 4176000.0,
+      "G": 1612800.0,
+      "alpha": 0.0000065
+    }
+  },
+  "sections": {
+    "top_lateral_bracing": {
+      "A": 1.0
+    },
+    "lower_chord": {
+      "A": 1.0
+    },
+    "upper_end": {
+      "A": 1.0
+    },
+    "upper_chord": {
+      "A": 1.0
+    },
+    "vertical": {
+      "A": 1.0
+    },
+    "diagonal": {
+      "A": 1.0
+    },
+    "tension_rod": {
+      "A": 1.0
+    },
+    "floor_beam": {
+      "A": 0.6,
+      "Iy": 0.4,
+      "Iz": 0.08,
+      "J": 0.03
+    },
+    "stringer_heavy": {
+      "A": 0.8888888889,
+      "Iy": 0.1316872428,
+      "Iz": 0.0329218107,
+      "J": 0.01
+    },
+    "stringer_light": {
+      "A": 0.25,
+      "Iy": 0.0208333333,
+      "Iz": 0.0013020833,
+      "J": 0.001
+    }
+  },
+  "elements": {
+    "101": { "type": "3D_truss", "nodes": [1, 2], "material": "wrought_iron", "section": "lower_chord" },
+    "102": { "type": "3D_truss", "nodes": [2, 3], "material": "wrought_iron", "section": "lower_chord" },
+    "103": { "type": "3D_truss", "nodes": [3, 4], "material": "wrought_iron", "section": "lower_chord" },
+    "104": { "type": "3D_truss", "nodes": [4, 5], "material": "wrought_iron", "section": "lower_chord" },
+    "105": { "type": "3D_truss", "nodes": [5, 6], "material": "wrought_iron", "section": "lower_chord" },
+    "106": { "type": "3D_truss", "nodes": [6, 7], "material": "wrought_iron", "section": "lower_chord" },
+
+    "107": { "type": "3D_truss", "nodes": [1, 8], "material": "wrought_iron", "section": "upper_end" },
+    "108": { "type": "3D_truss", "nodes": [8, 9], "material": "wrought_iron", "section": "upper_chord" },
+    "109": { "type": "3D_truss", "nodes": [9, 10], "material": "wrought_iron", "section": "upper_chord" },
+    "110": { "type": "3D_truss", "nodes": [10, 11], "material": "wrought_iron", "section": "upper_chord" },
+    "111": { "type": "3D_truss", "nodes": [11, 12], "material": "wrought_iron", "section": "upper_chord" },
+    "112": { "type": "3D_truss", "nodes": [7, 12], "material": "wrought_iron", "section": "upper_end" },
+
+    "113": { "type": "3D_truss", "nodes": [2, 8], "material": "wrought_iron", "section": "vertical" },
+    "114": { "type": "3D_truss", "nodes": [3, 9], "material": "wrought_iron", "section": "vertical" },
+    "115": { "type": "3D_truss", "nodes": [4, 10], "material": "wrought_iron", "section": "vertical" },
+    "116": { "type": "3D_truss", "nodes": [5, 11], "material": "wrought_iron", "section": "vertical" },
+    "117": { "type": "3D_truss", "nodes": [6, 12], "material": "wrought_iron", "section": "vertical" },
+
+    "118": { "type": "3D_truss", "nodes": [3, 8], "material": "wrought_iron", "section": "diagonal" },
+    "119": { "type": "3D_truss", "nodes": [4, 9], "material": "wrought_iron", "section": "diagonal" },
+    "120": { "type": "3D_truss", "nodes": [4, 11], "material": "wrought_iron", "section": "diagonal" },
+    "121": { "type": "3D_truss", "nodes": [5, 12], "material": "wrought_iron", "section": "diagonal" },
+
+    "122": { "type": "3D_truss", "nodes": [3, 10], "material": "wrought_iron", "section": "tension_rod" },
+    "123": { "type": "3D_truss", "nodes": [5, 10], "material": "wrought_iron", "section": "tension_rod" },
+
+    "201": { "type": "3D_truss", "nodes": [13, 14], "material": "wrought_iron", "section": "lower_chord" },
+    "202": { "type": "3D_truss", "nodes": [14, 15], "material": "wrought_iron", "section": "lower_chord" },
+    "203": { "type": "3D_truss", "nodes": [15, 16], "material": "wrought_iron", "section": "lower_chord" },
+    "204": { "type": "3D_truss", "nodes": [16, 17], "material": "wrought_iron", "section": "lower_chord" },
+    "205": { "type": "3D_truss", "nodes": [17, 18], "material": "wrought_iron", "section": "lower_chord" },
+    "206": { "type": "3D_truss", "nodes": [18, 19], "material": "wrought_iron", "section": "lower_chord" },
+
+    "207": { "type": "3D_truss", "nodes": [13, 20], "material": "wrought_iron", "section": "upper_end" },
+    "208": { "type": "3D_truss", "nodes": [20, 21], "material": "wrought_iron", "section": "upper_chord" },
+    "209": { "type": "3D_truss", "nodes": [21, 22], "material": "wrought_iron", "section": "upper_chord" },
+    "210": { "type": "3D_truss", "nodes": [22, 23], "material": "wrought_iron", "section": "upper_chord" },
+    "211": { "type": "3D_truss", "nodes": [23, 24], "material": "wrought_iron", "section": "upper_chord" },
+    "212": { "type": "3D_truss", "nodes": [19, 24], "material": "wrought_iron", "section": "upper_end" },
+
+    "213": { "type": "3D_truss", "nodes": [14, 20], "material": "wrought_iron", "section": "vertical" },
+    "214": { "type": "3D_truss", "nodes": [15, 21], "material": "wrought_iron", "section": "vertical" },
+    "215": { "type": "3D_truss", "nodes": [16, 22], "material": "wrought_iron", "section": "vertical" },
+    "216": { "type": "3D_truss", "nodes": [17, 23], "material": "wrought_iron", "section": "vertical" },
+    "217": { "type": "3D_truss", "nodes": [18, 24], "material": "wrought_iron", "section": "vertical" },
+
+    "218": { "type": "3D_truss", "nodes": [15, 20], "material": "wrought_iron", "section": "diagonal" },
+    "219": { "type": "3D_truss", "nodes": [16, 21], "material": "wrought_iron", "section": "diagonal" },
+    "220": { "type": "3D_truss", "nodes": [16, 23], "material": "wrought_iron", "section": "diagonal" },
+    "221": { "type": "3D_truss", "nodes": [17, 24], "material": "wrought_iron", "section": "diagonal" },
+
+    "222": { "type": "3D_truss", "nodes": [15, 22], "material": "wrought_iron", "section": "tension_rod" },
+    "223": { "type": "3D_truss", "nodes": [17, 22], "material": "wrought_iron", "section": "tension_rod" },
+
+    "301": { "type": "3D_frame", "nodes": [2, 25], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "302": { "type": "3D_frame", "nodes": [25, 26], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "303": { "type": "3D_frame", "nodes": [26, 27], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "304": { "type": "3D_frame", "nodes": [27, 14], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+
+    "305": { "type": "3D_frame", "nodes": [3, 28], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "306": { "type": "3D_frame", "nodes": [28, 29], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "307": { "type": "3D_frame", "nodes": [29, 30], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "308": { "type": "3D_frame", "nodes": [30, 15], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+
+    "309": { "type": "3D_frame", "nodes": [4, 31], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "310": { "type": "3D_frame", "nodes": [31, 32], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "311": { "type": "3D_frame", "nodes": [32, 33], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "312": { "type": "3D_frame", "nodes": [33, 16], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+
+    "313": { "type": "3D_frame", "nodes": [5, 34], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "314": { "type": "3D_frame", "nodes": [34, 35], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "315": { "type": "3D_frame", "nodes": [35, 36], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "316": { "type": "3D_frame", "nodes": [36, 17], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+
+    "317": { "type": "3D_frame", "nodes": [6, 37], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "318": { "type": "3D_frame", "nodes": [37, 38], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "319": { "type": "3D_frame", "nodes": [38, 39], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+    "320": { "type": "3D_frame", "nodes": [39, 18], "material": "wrought_iron", "section": "floor_beam", "release": { "start": [], "end": [] } },
+
+    "401": { "type": "3D_frame", "nodes": [25, 28], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "402": { "type": "3D_frame", "nodes": [28, 31], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "403": { "type": "3D_frame", "nodes": [31, 34], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "404": { "type": "3D_frame", "nodes": [34, 37], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+
+    "405": { "type": "3D_frame", "nodes": [26, 29], "material": "wrought_iron", "section": "stringer_light", "release": { "start": [], "end": [] } },
+    "406": { "type": "3D_frame", "nodes": [29, 32], "material": "wrought_iron", "section": "stringer_light", "release": { "start": [], "end": [] } },
+    "407": { "type": "3D_frame", "nodes": [32, 35], "material": "wrought_iron", "section": "stringer_light", "release": { "start": [], "end": [] } },
+    "408": { "type": "3D_frame", "nodes": [35, 38], "material": "wrought_iron", "section": "stringer_light", "release": { "start": [], "end": [] } },
+
+    "409": { "type": "3D_frame", "nodes": [27, 30], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "410": { "type": "3D_frame", "nodes": [30, 33], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "411": { "type": "3D_frame", "nodes": [33, 36], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "412": { "type": "3D_frame", "nodes": [36, 39], "material": "wrought_iron", "section": "stringer_heavy", "release": { "start": [], "end": [] } },
+    "501": { "type": "3D_truss", "nodes": [8, 20], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "502": { "type": "3D_truss", "nodes": [9, 21], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "503": { "type": "3D_truss", "nodes": [10, 22], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "504": { "type": "3D_truss", "nodes": [11, 23], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "505": { "type": "3D_truss", "nodes": [12, 24], "material": "wrought_iron", "section": "top_lateral_bracing" },
+
+    "506": { "type": "3D_truss", "nodes": [8, 21], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "507": { "type": "3D_truss", "nodes": [20, 9], "material": "wrought_iron", "section": "top_lateral_bracing" },
+
+    "508": { "type": "3D_truss", "nodes": [9, 22], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "509": { "type": "3D_truss", "nodes": [21, 10], "material": "wrought_iron", "section": "top_lateral_bracing" },
+
+    "510": { "type": "3D_truss", "nodes": [10, 23], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "511": { "type": "3D_truss", "nodes": [22, 11], "material": "wrought_iron", "section": "top_lateral_bracing" },
+
+    "512": { "type": "3D_truss", "nodes": [11, 24], "material": "wrought_iron", "section": "top_lateral_bracing" },
+    "513": { "type": "3D_truss", "nodes": [23, 12], "material": "wrought_iron", "section": "top_lateral_bracing" } 
+  },
+      "supports": {
+    "1": ["ux", "uy", "uz", "rx", "ry", "rz"],
+    "2": ["uy", "rx", "ry", "rz"],
+    "3": ["uy", "rx", "ry", "rz"],
+    "4": ["uy", "rx", "ry", "rz"],
+    "5": ["uy", "rx", "ry", "rz"],
+    "6": ["uy", "rx", "ry", "rz"],
+    "7": ["uy", "uz", "rx", "ry", "rz"],
+    "8": ["uy", "rx", "ry", "rz"],
+    "9": ["uy", "rx", "ry", "rz"],
+    "10": ["uy", "rx", "ry", "rz"],
+    "11": ["uy", "rx", "ry", "rz"],
+    "12": ["uy", "rx", "ry", "rz"],
+
+    "13": ["ux", "uy", "uz", "rx", "ry", "rz"],
+    "14": ["uy", "rx", "ry", "rz"],
+    "15": ["uy", "rx", "ry", "rz"],
+    "16": ["uy", "rx", "ry", "rz"],
+    "17": ["uy", "rx", "ry", "rz"],
+    "18": ["uy", "rx", "ry", "rz"],
+    "19": ["uy", "uz", "rx", "ry", "rz"],
+    "20": ["uy", "rx", "ry", "rz"],
+    "21": ["uy", "rx", "ry", "rz"],
+    "22": ["uy", "rx", "ry", "rz"],
+    "23": ["uy", "rx", "ry", "rz"],
+    "24": ["uy", "rx", "ry", "rz"]
+  },
+  "nodal_loads": [],
+  "member_loads": [
+    { "element": 401, "type": "uniform_local_z", "w": -0.159 },
+    { "element": 402, "type": "uniform_local_z", "w": -0.159 },
+    { "element": 403, "type": "uniform_local_z", "w": -0.159 },
+    { "element": 404, "type": "uniform_local_z", "w": -0.159 },
+
+    { "element": 405, "type": "uniform_local_z", "w": -0.039 },
+    { "element": 406, "type": "uniform_local_z", "w": -0.039 },
+    { "element": 407, "type": "uniform_local_z", "w": -0.039 },
+    { "element": 408, "type": "uniform_local_z", "w": -0.039 },
+
+    { "element": 409, "type": "uniform_local_z", "w": -0.159 },
+    { "element": 410, "type": "uniform_local_z", "w": -0.159 },
+    { "element": 411, "type": "uniform_local_z", "w": -0.159 },
+    { "element": 412, "type": "uniform_local_z", "w": -0.159 }
+  ],
+  "prescribed_displacements": [],
+  "temperature_loads": [],
+  "fabrication_errors": []
+}

@@ -1,0 +1,75 @@
+{
+  "model_name": "scenario_extreme_missing_diagonals_overload",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "n_nodes": 39,
+  "n_elements": 87,
+  "n_truss_elements": 55,
+  "n_frame_elements": 32,
+  "n_free_dofs": 132,
+  "n_restrained_dofs": 102,
+  "max_displacement_node": 32,
+  "max_displacement_magnitude": 0.000968872177511712,
+  "top_truss_members": [
+    {
+      "elem_id": 203,
+      "axial_abs_max": 17.320565135978466,
+      "stress_axial_abs_max": 17.320565135978466
+    },
+    {
+      "elem_id": 204,
+      "axial_abs_max": 17.300527090879747,
+      "stress_axial_abs_max": 17.300527090879747
+    },
+    {
+      "elem_id": 103,
+      "axial_abs_max": 17.27305975262471,
+      "stress_axial_abs_max": 17.27305975262471
+    },
+    {
+      "elem_id": 104,
+      "axial_abs_max": 17.253211394052435,
+      "stress_axial_abs_max": 17.253211394052435
+    },
+    {
+      "elem_id": 212,
+      "axial_abs_max": 15.01281170920782,
+      "stress_axial_abs_max": 15.01281170920782
+    }
+  ],
+  "top_frame_members": [
+    {
+      "elem_id": 313,
+      "moment_abs_max": 25.76081197975962,
+      "moment_y_abs_max": 25.76081197975962,
+      "moment_z_abs_max": 3.3789358157402987
+    },
+    {
+      "elem_id": 316,
+      "moment_abs_max": 25.635374381682215,
+      "moment_y_abs_max": 25.635374381682215,
+      "moment_z_abs_max": 3.3889272623046267
+    },
+    {
+      "elem_id": 309,
+      "moment_abs_max": 25.532894617258858,
+      "moment_y_abs_max": 25.532894617258858,
+      "moment_z_abs_max": 0.06157292150176552
+    },
+    {
+      "elem_id": 312,
+      "moment_abs_max": 25.389146494687072,
+      "moment_y_abs_max": 25.389146494687072,
+      "moment_z_abs_max": 0.061097477740460704
+    },
+    {
+      "elem_id": 305,
+      "moment_abs_max": 13.386225802819704,
+      "moment_y_abs_max": 13.386225802819704,
+      "moment_z_abs_max": 3.5161729396941057
+    }
+  ],
+  "timestamp": "2026-04-23T23:09:14"
+}

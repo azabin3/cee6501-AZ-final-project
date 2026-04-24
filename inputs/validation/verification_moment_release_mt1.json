@@ -1,0 +1,53 @@
+{
+  "model_name": "verification_moment_release_mt1",
+  "units": {
+    "length": "ft",
+    "force": "kip"
+  },
+  "nodes": {
+    "1": [0.0, 0.0, 0.0],
+    "2": [10.0, 0.0, 0.0]
+  },
+  "materials": {
+    "steel": {
+      "E": 29000.0,
+      "G": 11200.0,
+      "alpha": 0.0000065
+    }
+  },
+  "sections": {
+    "beam": {
+      "A": 1.0,
+      "Iy": 1.0,
+      "Iz": 1.0,
+      "J": 1.0
+    }
+  },
+  "elements": {
+    "1": {
+      "type": "3D_frame",
+      "nodes": [1, 2],
+      "material": "steel",
+      "section": "beam",
+      "release": {
+        "start": ["rx", "ry", "rz"],
+        "end": []
+      }
+    }
+  },
+  "supports": {
+    "1": ["ux", "uy", "uz", "rx", "ry", "rz"],
+    "2": ["ux", "uy", "uz", "rx", "ry", "rz"]
+  },
+  "nodal_loads": [],
+  "member_loads": [
+    {
+      "element": 1,
+      "type": "uniform_local_y",
+      "w": -0.1
+    }
+  ],
+  "prescribed_displacements": [],
+  "temperature_loads": [],
+  "fabrication_errors": []
+}

@@ -1,0 +1,3 @@
+elem_id,type,node_i,node_j,ux_i_local,uy_i_local,uz_i_local,rx_i_local,ry_i_local,rz_i_local,ux_j_local,uy_j_local,uz_j_local,rx_j_local,ry_j_local,rz_j_local
+1,3D_frame,1,2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+2,3D_frame,2,3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

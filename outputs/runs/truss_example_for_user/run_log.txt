@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-24T01:19:15
+model_name  truss_example_for_user
+model_path  inputs/user_examples/truss_example_for_user.json
+output_folder  outputs\runs\truss_example_for_user

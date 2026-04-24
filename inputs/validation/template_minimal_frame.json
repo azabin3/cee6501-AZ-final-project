@@ -1,0 +1,73 @@
+{
+  "model_name": "template_minimal_frame",
+  "units": {
+    "length": "ft",
+    "force": "kip",
+    "stress": "kip/ft^2",
+    "area": "ft^2",
+    "moment": "kip-ft",
+    "moment_of_inertia": "ft^4",
+    "torsion_constant": "ft^4",
+    "distributed_load": "kip/ft",
+    "temperature": "F",
+    "thermal_expansion": "1/F",
+    "symbol_guide": {
+      "L_x_y_z": "ft",
+      "Fx_Fy_Fz": "kip",
+      "Mx_My_Mz": "kip-ft",
+      "E_G": "kip/ft^2",
+      "A": "ft^2",
+      "Iy_Iz": "ft^4",
+      "J": "ft^4",
+      "w": "kip/ft",
+      "deltaT": "F",
+      "alpha": "1/F",
+      "deltaL": "ft"
+    }
+  },  
+
+  "nodes": {
+    "1": [0.0, 0.0, 0.0],
+    "2": [10.0, 0.0, 0.0]
+  },
+  "materials": {
+    "default_material": {
+      "E": 29000.0,
+      "G": 11200.0,
+      "alpha": 0.0000065
+    }
+  },
+  "sections": {
+    "default_frame": {
+      "A": 1.0,
+      "Iy": 1.0,
+      "Iz": 1.0,
+      "J": 1.0
+    }
+  },
+  "elements": {
+    "1": {
+      "type": "3D_frame",
+      "nodes": [1, 2],
+      "material": "default_material",
+      "section": "default_frame",
+      "release": {
+        "start": [],
+        "end": []
+      }
+    }
+  },
+  "supports": {
+    "1": ["ux", "uy", "uz", "rx", "ry", "rz"]
+  },
+  "nodal_loads": [
+    {
+      "node": 2,
+      "values": [0.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+    }
+  ],
+  "member_loads": [],
+  "prescribed_displacements": [],
+  "temperature_loads": [],
+  "fabrication_errors": []
+}

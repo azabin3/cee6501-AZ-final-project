@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-24T01:09:24
+model_name  beam_example_for_user
+model_path  inputs/user_examples/beam_example_for_user.json
+output_folder  outputs\runs\beam_example_for_user

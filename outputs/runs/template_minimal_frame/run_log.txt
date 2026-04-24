@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-22T23:40:55
+model_name  template_minimal_frame
+model_path  inputs/validation/template_minimal_frame.json
+output_folder  outputs\runs\template_minimal_frame

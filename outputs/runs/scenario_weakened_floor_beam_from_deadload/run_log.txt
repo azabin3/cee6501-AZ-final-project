@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-24T00:05:42
+model_name  scenario_weakened_floor_beam_from_deadload
+model_path  inputs/final_bridge/scenario_weakened_floor_beam_from_deadload.json
+output_folder  outputs\runs\scenario_weakened_floor_beam_from_deadload

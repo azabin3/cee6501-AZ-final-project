@@ -1,0 +1,6 @@
+Run log
+
+timestamp  2026-04-23T16:35:10
+model_name  verification_uniform_temperature_frame
+model_path  inputs/validation/Validation files from previous examples/verification_uniform_temperature_frame.json
+output_folder  outputs\runs\verification_uniform_temperature_frame
